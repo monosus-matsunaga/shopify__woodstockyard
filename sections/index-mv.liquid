@@ -1,0 +1,210 @@
+
+{%- style -%}
+  .mv-slider {
+    position: relative;
+  }
+  .h1-mv {
+    margin: 0 auto;
+    height: 465px;
+    background: url({{ "index_mv-bg_pc.png" | asset_url }}) center center repeat-x;
+    background-size: cover;
+    text-align: center;
+  }
+  .h1-mv img {
+    width: auto;
+    height: 440px;
+    margin: 0 auto;
+  }
+  .mv-slider-item {
+    width: 100%;
+    height: 465px;
+  }
+  .mv-slider-figure {
+      margin: 0;
+  }
+  .mv-slider-figure.-bg-black {
+      background-color: #000;
+  }
+  .mv-slider-image {
+      width: 100%;
+      height: 465px;
+      object-fit: contain;
+      object-position: center;
+  }
+  .mv-slider-arrows .slick-arrow {
+    display: none !important;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: calc(465px / 2);
+    transform: translateY(-50%);
+    z-index: 3;
+    background-size: 8px;
+    background-color: rgba(251, 250, 247, 0.75);
+    background-position: center;
+    background-repeat: no-repeat;
+    font-size: 0;
+    border: 0;
+  }
+  .mv-slider-arrows .slick-prev {
+    background-image: url({{ "index_mv_arrow-prev.png" | asset_url }});
+    left: 0;
+  }
+  .mv-slider-arrows .slick-next {
+    background-image: url({{ "index_mv_arrow-next.png" | asset_url }});
+    right: 0;
+  }
+  .mv-slider-dots {
+    position: absolute;
+    left: 0px;
+    bottom: -16px;
+    margin-left: auto;
+    margin-right: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .mv-slider-dots .slick-dots{
+    margin: 0px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-column-gap: 10px;
+       -moz-column-gap: 10px;
+            column-gap: 10px;
+    padding: 0px;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+  
+  .mv-slider-dots .slick-dots > li {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0;
+  }
+  
+  .mv-slider-dots .slick-dots > li:before {
+    content: none !important;
+  }
+  
+  .mv-slider-dots .slick-dots > li > button{
+    height: 7px;
+    width: 7px;
+    border-radius: 9999px;
+    --tw-bg-opacity: 1;
+    background-color: #e5e5e5;
+    padding: 0;
+    font-size: 0;
+    border: 0;
+  }
+  
+  .mv-slider-dots .slick-dots > li.slick-active > button{
+    --tw-bg-opacity: 1;
+    background-color: #808080;
+  }
+
+  @media screen and (min-width: 750px) {
+    .is-sp { display: none !important; }
+    .header__heading {
+      visibility: hidden;
+    }
+    .h1-mv {
+      height: 46.5vw;
+      background-size: contain;
+    }
+    .h1-mv img {
+      width: auto;
+      height: 46.5vw;
+    }
+    .mv-slider-arrows .slick-arrow {
+      display: block !important;
+    }
+    .mv-slider-dots {
+      bottom: -34px;
+    }
+    .mv-slider-dots .slick-dots{
+      -webkit-column-gap: 18px;
+         -moz-column-gap: 18px;
+              column-gap: 18px;      
+    }
+    .mv-slider-dots .slick-dots > li > button{
+      height: 11px;
+      width: 11px;
+    }
+  }
+  @media screen and (min-width: 1000px) {
+    .h1-mv {
+      height: 465px;
+    }
+    .h1-mv img {
+      height: 465px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .is-pc { display: none !important; }
+  }
+}
+{%- endstyle -%}
+
+<div class="mv-slider" data-js-slider="root">
+  <div class="mv-slider-main" data-js-slider="main">
+    <!--div class="mv-slider-item">
+      <a class="mv-slider-link" href="/pages/campaign202211">
+        <figure class="mv-slider-figure -bg-black">
+          <img class="mv-slider-image is-pc" src="{{ 'index_mv-lp_pc.jpg' | asset_url }} " alt="スキーマ建築計画×TANKと全長6m・2.5tの巨大丸太を一本丸々使った建築・空間づくり、やりませんか。">
+          <img class="mv-slider-image is-sp" src="{{ 'index_mv-lp_sp.jpg' | asset_url }} " alt="スキーマ建築計画×TANKと全長6m・2.5tの巨大丸太を一本丸々使った建築・空間づくり、やりませんか。">
+        </figure>
+      </a>
+  </div-->
+    <div class="mv-slider-item">
+<h1 class="h1-mv">
+  <img class="is-pc" src="{{ 'index_mv_pc.png' | asset_url }} " alt="WOOD STOCK YARD">
+  <img class="is-sp" src="{{ 'index_mv_sp.png' | asset_url }} " alt="WOOD STOCK YARD">
+</h1>
+    </div>
+  </div>
+  <div class="mv-slider-arrows" data-js-slider="arrows"></div>
+  <div class="mv-slider-dots" data-js-slider="dots"></div>
+</div>
+
+{%- style -%}
+@import url("//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css");
+{%- endstyle -%}
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script>
+$(() => {
+  const $target = $('[data-js-slider="main"]')
+  if ($('.mv-slider-item').length < 2) { return }
+  $.each($target, (i, v) => {
+    $(v).slick({
+      autoplay: true,
+      autoplaySpeed: 5000,
+      dots: true,
+      arrows: true,
+      appendArrows: $(v).closest('[data-js-slider="root"]').find('[data-js-slider="arrows"]'),
+      appendDots: $(v).closest('[data-js-slider="root"]').find('[data-js-slider="dots"]'),
+    })
+  })
+  $(window).on('resize orientationchange', function () {
+    $target.slick('resize')
+  })
+})
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+
+{% schema %}
+  {
+    "name": "index-MV",
+    "settings": []
+  }
+{% endschema %}

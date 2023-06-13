@@ -1,0 +1,425 @@
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+<link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  .mod-product-cards {
+    margin: 30px 0 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .collection-category {
+    display: grid;
+    grid-template:
+    "category-title category-title" auto
+    "... ..." 7px
+    "category-image ..." auto
+    "category-text category-text" auto
+    / auto 1fr;
+    margin-bottom: 31px;
+  }
+  .collection + .collection-category {
+    margin-top: 33px;
+  }
+  .collection-category-title {
+    grid-area: category-title;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-bottom: 8px;
+  }
+  .collection-category-title:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #a29953;
+  }
+  .collection-category-title-main {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: var(--font-body-family) !important;
+  }
+  .collection-category-title-sub {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .collection-category-image {
+    grid-area: category-image;
+    width: 100%;
+  }
+  .collection-category-image.-img01 {
+    width: 190px;
+  }
+  .collection-category-image.-img02 {
+    width: 192px;
+  }
+  .collection-category-image.-img03 {
+    width: 265px;
+  }
+  .collection-category-image.-img04 {
+    width: 190px;
+  }
+  .collection-category-image.-img05 {
+    width: 113px;
+  }
+  .collection-category-text {
+    grid-area: category-text;
+    margin-top: 22px;
+    font-weight: 300;
+  }
+  .h3-card-heading {
+    font-size: 12px;
+  }
+  .mod-product-information .card__information {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .caption-product-summary {
+    margin: 30px 0 0;
+    font-size: 10px;
+    font-weight: normal;
+  }
+  .caption-product-price {
+    margin: 10px 0 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 13px;
+  }
+  .caption-product-price-num {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  .list-metafields-items {
+    margin: 10px 0 0;
+    border-top: solid 1px #ccc;
+    padding: 5px 0 0;
+    list-style: none;
+    color: #8A733B;
+    font-size: 10px;
+  }
+  .list-metafields-items > li {
+    display: inline-block;
+    margin-right: 1em;
+  }
+  .list-metafields-items > li::before {
+    display: inline-block;
+    content: "#";
+  }
+  .ico-product-main-category {
+    position: absolute;
+    right: -2px;
+    top: -10px;
+    display: inline-block;
+    border:solid 1px #000;
+    background: #D5D2BE;
+    padding: 1px 18px;
+    font-size: 10px;
+    color: #000;
+    border-radius: 10px;    
+  }
+  .btn-pickup-top {
+    height: 50px;
+    width: 240px;    
+  }
+  
+  @media screen and (min-width: 750px) {
+    .collection-category {
+      grid-template:
+      "category-title category-title category-title category-title" auto
+      "category-image . category-text ..." auto
+      / auto 40px 600px 1fr;
+      margin-bottom: 64px;
+    }
+    .collection + .collection-category {
+      margin-top: 76px;
+    }
+    .collection-category-title {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-bottom: 8px;
+    }
+    .collection-category-title:before {
+    }
+    .collection-category-title-main {
+      font-size: 30px;
+    }
+    .collection-category-title-sub {
+      font-size: 14px;
+    }
+    .collection-category-image {
+    }
+    .collection-category-text {
+      margin-top: 6px;
+    }
+    .h3-card-heading {
+      font-size: 16px;
+    }
+    .caption-product-summary {
+      font-size: 12px;
+    }
+    .caption-product-price {
+      margin: 25px 0 0;
+      font-size: 16px;
+    }
+    .caption-product-price-num {
+      font-size: 22px;
+    }
+    .list-metafields-items {
+      margin: 12px 0 0;
+      padding: 10px 0 0;
+      font-size: 12px;
+    }
+    .ico-product-main-category {
+      right: -4px;
+      top: -13px;
+      padding: 2px 18px;
+      font-size: 12px;
+      border-radius: 13px;    
+    }
+    .btn-pickup-top {
+      height: 60px;
+      width: 300px;    
+    }
+  }
+{%- endstyle -%}
+
+
+
+
+<div class="section-{{ section.id }}-padding">
+  {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
+    {{ 'component-facets.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'facets.js' | asset_url }}" defer="defer"></script>
+  
+    <div class="page-width" id="main-collection-filters" data-id="{{ section.id }}">
+      {% render 'facets', results: collection, enable_filtering: section.settings.enable_filtering, enable_sorting: section.settings.enable_sorting, collapse_on_larger_devices: section.settings.collapse_on_larger_devices %}
+    </div>
+  {%- endif -%}
+  
+  <div id="ProductGridContainer">
+    {% assign target_tags = "5/4×4, 2×4, 2×6, 4×4, 2×2" | split: ", " %}
+    {% assign target_titles = "ファイブクォーター・バイ・フォー, ツー・バイ・フォー, ツー・バイ・シックス, フォー・バイ・フォー, ツー・バイ・ツー" | split: ", " %}
+    {% assign target_texts = "ファイブクォーター・バイ・フォーと読みます。幅は2x4材と同じですが、厚みが薄くより軽く扱いやすい材。デッキの天板にはもちろん、家具の制作にも用いられます。, 最も汎用性の高いサイズ。2x4工法の小屋作りのフレームや、デッキ、家具にとなんにでも使えます。,  デッキ材としては最も需要の高いサイズ。幅広なのでベンチの制作など家具づくりにも人気です。<br>最も在庫が動きやすく、品薄になりがち。, デッキの束や小屋の柱にも使えるサイズの角材。<br>ウェスタンレッドシダーは軽く、加工も容易なため、屋外での構造物に欠かせないサイズです。, 36x36mmの角材。ルーバーや家具の脚など軽やかさが求められる場所に。<br>短尺材が多く出てくるのでアイディア次第でDIYの幅が拡がります。" | split: ", " %}
+    {%- for target_tag in target_tags -%}
+      {% assign index = forloop.index %}
+      {% assign index0 = forloop.index0 %}
+      <div class="collection-category page-width">
+        <h2 class="collection-category-title">
+          <span class="collection-category-title-main">{{ target_tag }}</span><span class="collection-category-title-sub">（{{ target_titles[index0] }}）</span>
+        </h2>
+        <img
+          class="collection-category-image -img0{{ index }}"
+          src="{{  'classify-1x2x4x-0' | append: index | append: '.png' | asset_url }}"
+          alt=""
+        />
+        <p class="collection-category-text">{{ target_texts[index0] }}</p>
+      </div>
+      {% assign is_exist = false %}
+      {%- for product in collection.products -%}
+        {% if product.tags contains target_tag %}
+          {% assign is_exist = true %}
+        {%- endif -%}
+      {%- endfor -%}
+          {%- unless is_exist -%}
+          <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
+            <div class="loading-overlay gradient"></div>
+            <div class="title-wrapper center">
+              <h2 class="title title--primary">
+                {{ 'sections.collection_template.empty' | t }}<br>
+                {{ 'sections.collection_template.use_fewer_filters_html' | t: link: collection.url, class: "underlined-link link" }}
+              </h2>
+            </div>
+          </div>
+        {%- else -%}
+          <div class="collection page-width">
+            <div class="loading-overlay gradient"></div>
+            
+            <ul id="product-grid" data-id="{{ section.id }}" class="
+              grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
+              {% if section.settings.columns_desktop == 1 %} grid--full-width{% else %}
+                grid--{{ section.settings.columns_desktop }}-col-desktop
+              {% endif %}">
+              {%- for product in collection.products -%}
+                {% unless product.tags contains target_tag %}
+                  {%- continue -%}
+                {%- endunless -%}
+                {% assign lazy_load = false %}
+                {%- if forloop.index > 2 -%}
+                  {%- assign lazy_load = true -%}
+                {%- endif -%}
+                <li class="grid__item">
+                  {% render 'card-product',
+                    card_product: product,
+                    media_aspect_ratio: section.settings.image_ratio,
+                    show_secondary_image: section.settings.show_secondary_image,
+                    show_vendor: section.settings.show_vendor,
+                    show_rating: section.settings.show_rating,
+                    lazy_load: lazy_load
+                  %}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endunless -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-product-grid.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 24,
+      "step": 4,
+      "default": 16,
+      "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "t:sections.main-collection-product-grid.settings.columns_desktop.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header__3.content"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.main-collection-product-grid.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.main-collection-product-grid.settings.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.show_rating.label",
+      "info": "t:sections.main-collection-product-grid.settings.show_rating.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header__1.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_filtering.label",
+      "info": "t:sections.main-collection-product-grid.settings.enable_filtering.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "collapse_on_larger_devices",
+      "default": false,
+      "label": "t:sections.main-collection-product-grid.settings.collapse_on_larger_devices.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-collection-product-grid.settings.header_mobile.content"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "2",
+      "label": "t:sections.main-collection-product-grid.settings.columns_mobile.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.main-collection-product-grid.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.main-collection-product-grid.settings.columns_mobile.options__2.label"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

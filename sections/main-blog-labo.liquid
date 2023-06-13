@@ -1,0 +1,223 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .wsy-main-page-title-wrapper {
+    width: calc(100% - 36px);
+    max-width: 1280px;
+    height: 515px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .wsy-main-page-title {
+    margin: 0;
+    padding: 12.1vw 0 0;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .page-subtitle {
+    display: block;
+    font-size: 18px;
+    text-align: center;
+  }
+  .wsy-main-page-image {
+    padding-bottom: 65px;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .wsy-main-page-title-wrapper {
+      width: calc(100% - 80px);
+      margin: 0 auto;
+      flex-direction: row;
+      align-items: center;
+    }
+    .wsy-main-page-title {
+      margin-right: 20px;
+      padding: 0;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+    }
+    .wsy-main-page-title-labo svg {
+      width:280.859px;
+      height:72.412px;
+    }
+    .page-subtitle {
+      padding-top: 14px;
+      font-size: 22px;
+      text-align: left;
+    }
+    .wsy-main-page-image {
+      padding-bottom: 0;
+    }
+  }
+  
+  .article::after {
+    display:block;
+    position: absolute;
+    right: -7px;
+    top: -26px;
+    width: 53px;
+    height: 53px;
+    content: "";
+    background-image: url({{ "labo_ico_diy.png" | asset_url }});
+    background-size: cover;
+  }
+{%- endstyle -%}
+
+<section class="wsy-main-page-title-wrapper">
+  <h1 class="wsy-main-page-title wsy-main-page-title-{{ blog.handle }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="224.688" height="57.93" viewBox="0 0 224.688 57.93">
+      <path id="パス_2502" data-name="パス 2502" d="M-78.75,0h-33.359V-56.016h12.617v45.781H-78.75ZM-20.2,0h-13.75L-37.93-12.461H-57.852L-61.8,0H-75.469l20.391-56.016h14.961ZM-40.82-22.148l-6.016-18.828a24.536,24.536,0,0,1-.937-5.039h-.312a21.365,21.365,0,0,1-.977,4.883l-6.094,18.984ZM-13.2,0V-56.016H7.188q9.375,0,14.414,3.438a11.056,11.056,0,0,1,5.039,9.688,11.466,11.466,0,0,1-3.066,7.93,16.11,16.11,0,0,1-7.832,4.727v.156a15.523,15.523,0,0,1,9.551,4.414,12.345,12.345,0,0,1,3.574,8.945A14.951,14.951,0,0,1,23.359-4.512Q17.852,0,8.32,0ZM-.586-46.719v13.281H4.961a9.245,9.245,0,0,0,6.152-1.895,6.457,6.457,0,0,0,2.246-5.215q0-6.172-9.219-6.172Zm0,22.656V-9.3H6.25a10.521,10.521,0,0,0,6.855-2.031,6.786,6.786,0,0,0,2.48-5.547,6.331,6.331,0,0,0-2.441-5.273,10.8,10.8,0,0,0-6.816-1.914ZM61.758.977q-12.031,0-19.609-7.832T34.57-27.266q0-13.281,7.7-21.484t20.391-8.2q11.992,0,19.395,7.852t7.4,20.7q0,13.2-7.676,21.289T61.758.977Zm.547-47.07a12.7,12.7,0,0,0-10.547,4.98q-3.906,4.98-3.906,13.184,0,8.32,3.906,13.164A12.516,12.516,0,0,0,61.992-9.922a12.642,12.642,0,0,0,10.352-4.707q3.828-4.707,3.828-13.066,0-8.711-3.711-13.555A12.1,12.1,0,0,0,62.3-46.094Zm49.57-9.922-1.523,38.594h-10L98.906-56.016ZM105.469.9A7.262,7.262,0,0,1,100.313-1a6.046,6.046,0,0,1-2.031-4.59,5.851,5.851,0,0,1,2.051-4.609,7.512,7.512,0,0,1,5.137-1.8,7.3,7.3,0,0,1,5.117,1.816,5.944,5.944,0,0,1,1.992,4.59,6.076,6.076,0,0,1-1.973,4.648A7.238,7.238,0,0,1,105.469.9Z" transform="translate(112.109 56.953)"/>
+    </svg>
+    <span class="page-subtitle">作って愉しいラボ</span>
+  </h1>
+  
+  <div class="wsy-main-page-image main-page-image-{{ blog.handle }}">
+    <img src="{{ images['labo_hero_01.png'] | image_url }}" width="100%">
+  </div>
+</section>
+
+
+{%- paginate blog.articles by 6 -%}
+  <div class="main-blog page-width section-{{ section.id }}-padding">
+
+    <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
+      {%- for article in blog.articles -%}
+        <div class="blog-articles__article article">
+          {%- render 'article-card',
+            article: article,
+            media_height: section.settings.image_height,
+            media_aspect_ratio: article.image.aspect_ratio,
+            show_image: section.settings.show_image,
+            show_date: section.settings.show_date,
+            show_author: section.settings.show_author,
+            show_excerpt: true 
+          -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "t:sections.main-blog.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.main-blog.settings.header.content"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:sections.main-blog.settings.layout.options__1.label"
+        },
+        {
+          "value": "collage",
+          "label": "t:sections.main-blog.settings.layout.options__2.label"
+        }
+      ],
+      "default": "collage",
+      "label": "t:sections.main-blog.settings.layout.label",
+      "info": "t:sections.main-blog.settings.layout.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_image.label"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.main-blog.settings.image_height.options__1.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.main-blog.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.main-blog.settings.image_height.options__3.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.main-blog.settings.image_height.options__4.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.main-blog.settings.image_height.label",
+      "info": "t:sections.main-blog.settings.image_height.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.main-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "t:sections.main-blog.settings.show_author.label"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-blog.settings.paragraph.content"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

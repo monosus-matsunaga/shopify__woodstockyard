@@ -1,0 +1,96 @@
+{% comment %}
+    Renders a collection card
+
+    Accepts:
+    - card_collection: {Object} Collection Liquid object
+    - media_aspect_ratio: {String} Size of the product image card. Values are "square" and "portrait". Default is "square" (optional)
+    - columns: {Number} 
+    - extend_height: {Boolean} Card height extends to available container space. Default: false (optional)
+    
+    Usage:
+    {% render 'card-collection' %}
+{% endcomment %}
+
+
+{%- style -%}
+  .card-wrapper {
+    background: #fff;
+  }
+  .unit-card {
+    display: block;
+    padding: 10px 10px 15px;
+    text-decoration: none;
+    color: #000;
+  }
+  .unit-card.is-disabled {
+    pointer-events: none;
+    opacity: .7;
+  }
+  .img-collection {
+    margin: 0 auto;
+    width: 72px;
+  }
+  .unit-card img {
+    width: 100%;
+    transition: .2s ease;
+  }
+  .unit-card:not(.is-disabled):hover img {
+    transform: scale(1.1);
+  }
+  .h3-collection {
+    margin: 5px 0 0;
+    font-size: 15px;
+    text-align: center;
+  }
+  .unit-card:not(.is-disabled):hover .h3-collection {
+    text-decoration: underline;
+  }
+  .txt-collection-summary {
+    display: none;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .card-wrapper {
+      border-top: solid 1px #000;
+      background: transparent;
+    }
+    .unit-card {
+      display: flex;
+      padding: 15px 0;
+    }
+    .img-collection {
+      margin: 0 6.25% 0 0;
+      width: 90px;
+      flex-shrink: 0;
+      flex-grow: 0;
+    }
+    .h3-collection {
+      margin: 0;
+      text-align: left;
+      font-size: 18px;
+    }
+    .txt-collection-summary {
+      display: block;
+      margin: 10px 0 0;
+    }
+  }
+
+{%- endstyle -%}
+
+
+<div class="card-wrapper">
+  <a href="{{ card_collection.url }}" class="unit-card
+    {% if card_collection.title == '無垢板・掘り出しもの' or card_collection.title == 'DIY家具キット' or card_collection.title == '端材BOX' %} is-disabled{% endif %}">
+    <div class="img-collection">
+      <img src="{{ card_collection.featured_image | image_url }}"
+        alt="{{ card_collection.title | escape }}"
+        loading="lazy"
+      >
+    </div>
+    
+    <div class="cnt-collection">
+      <h3 class="h3-collection">{{ card_collection.title | escape }}</h3>
+      <p class="txt-collection-summary">{{ card_collection.description }}</p>
+    </div>
+  </a>
+</div>

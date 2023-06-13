@@ -1,0 +1,62 @@
+<!-- jqueryの追加 -->
+{{ '//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js' | script_tag }}
+{{ '//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css' | stylesheet_tag }}
+
+<style>
+.ui-datepicker-calendar .day-sunday > a,
+.ui-datepicker-calendar .day-holiday > a,
+.ui-datepicker-calendar .day-saturday > a {
+  background: #898989;
+  pointer-events: none;
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" defer="defer"></script>
+<script src="{{ 'datepicker-ja.js' | asset_url }}" defer="defer"></script>
+
+<div class="cart-shipping-calculate__deliver-date">
+  <div class="cart-shipping-calculate__label"><label for="date">配送希望日</label></div>
+  <div class="cart-shipping-calculate__value"><input id="date" type="text" name="shippingDate" value="{{ cart.attributes.date }}" readonly="readonly" /></div>
+</div>
+<script>
+  window.onload = function() {
+    fetch('/apps/proxy/holiday/app.php', {
+  headers:{
+    'Content-type':'application/liquid'    
+  },
+  method:"GET"
+})
+      .then(response => response.json())
+      .then(data => {
+        const holidaysData = data;
+        if (window.jQuery) {
+          let $ = window.jQuery;
+          $(function() {
+              $("#date").datepicker({
+                  minDate: +7,
+                  maxDate: '+2M',
+                  beforeShowDay: function(date) {
+                  if (date.getDay() == 0) {
+                    return [false, 'day-sunday', null];
+                  } else if (date.getDay() == 6) {
+                    return [false, 'day-saturday', null];
+                  }
+
+                  var holidays = Object.keys(holidaysData);
+                  for (var i = 0; i < holidays.length; i++) {
+                    var holiday = new Date(Date.parse(holidays[i]));
+                    if (holiday.getYear() == date.getYear() &&
+                        holiday.getMonth() == date.getMonth() &&
+                        holiday.getDate() == date.getDate()) {
+                        return [false, 'day-holiday', null];
+                    }
+                  }
+
+                  return [true, 'day-weekday', null];
+                }
+              });
+          });
+        }
+      });
+  }
+</script>

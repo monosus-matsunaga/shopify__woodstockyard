@@ -1,0 +1,298 @@
+<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'campaign202306.css' | asset_url }}">
+<meta property="og:image:secure_url" content="{{ 'campaign202306_ogp.png' | asset_url }}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" defer="defer"></script>
+
+<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'campaign202306.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .page-width--narrow {
+    max-width: 100%;
+  }
+
+.l-cta {
+	background-image: url({{ "campaign202306_bg_footer_01_pc.png" | asset_url }});
+}
+@media screen and (max-width: 896px){
+	.l-cta {
+		background-image: url({{ "campaign202306_bg_footer_01_sp.png" | asset_url }});
+	}	
+}  
+  
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding page-campaign-lp">
+  <div class="rte">
+
+    <div class="contents">
+      <section class="p-content">
+          <div class="p-content__in">
+              <div class="p-hero__main">
+                  <h1 class="p-hero__heading" style="margin: 0;">
+                      <img class="only-pc" src="{{ "campaign202306_hero_heading_01_pc.png" | asset_url }}" alt="新木場駅徒歩1分の木材ストックヤードに遊びに来ませんか。STOCK YARD OPEN DAY 7/1 Sat. 10:00 - 17:00 4社協同開催 石巻工房 ISHINOMAKI LABORATORY 徳田銘木 tokuda meiboku 高広木材株式会社 WOOD STOCK YARD">
+                      <img class="only-sp" src="{{ "campaign202306_hero_heading_01_sp.png" | asset_url }}" alt="新木場駅徒歩1分の木材ストックヤードに遊びに来ませんか。STOCK YARD OPEN DAY 7/1 Sat. 10:00 - 17:00 4社協同開催 石巻工房 ISHINOMAKI LABORATORY 徳田銘木 tokuda meiboku 高広木材株式会社 WOOD STOCK YARD">
+                  </h1>
+              </div>
+              <section class="p-common l-lead">
+                  <div class="p-common__in">
+                      <h2 class="p-common__ttl">新木場駅徒歩1分の<br class="only-sp">木材ストックヤードに<br>遊びに来ませんか。</h2>
+                      <p class="p-common__txt">WOODSTOCKYARDのメインストックヤードである東京・新木場の高広木材さんにて、<br>
+                        ストックヤードオープンデイを開催します。<br>
+                        なんと新木場駅から徒歩1分。新木場駅のロータリー沿いに500坪の木材倉庫と事務所があります。</p>
+                      <p class="p-common__txt">年に数回、ひとづてに頼まれてストックヤードを案内することがあるのですが、そのたびにみなさん驚くやら興奮するやらとても喜んでくれます。<br>
+                        それもそのはず。規格材ではとてもありえないような大きな無垢板があったり、もはや板ですらない巨大な木の塊があったり、はたまた切り落とされた端材が大量に積み上げられていたり…。<br>
+                        木が好きな方にとっては夢のような景色がひろがっているのです。</p>
+                      <div class="p-lead__box">
+                          <p class="p-lead__box-img"><img src="{{ "campaign202306_img_contents_01.png" | asset_url }}" alt="木材ストックヤード"></p>
+                          <p class="p-lead__box-img"><img src="{{ "campaign202306_img_contents_02.png" | asset_url }}" alt="木材ストックヤード"></p>
+                      </div>
+                      <p class="p-common__txt">7月1日（土）にそのストックヤードを体感できるオープンデイを高広木材さんと共同で開催することになりました。</p>
+                      <p class="p-common__txt">しかも今回はオープンデイに合わせて、石巻工房さん、徳田銘木さんもきてくれます。<br>
+                        石巻工房さんのミニチュアチェアをつくるワークショップに加えて、知る人ぞ知る徳田銘木さんのとっておきの銘木・変木の展示も行います。<br>
+                        当日はなんと石巻工房から代表の千葉さんが来てくださいます。</p>
+                      <p class="p-common__txt">「普段見られないサイズの木を見たい」「変わった材、デッドストック材を見てみたい」「規格材とは違った材木を見てみたい」と言う方はぜひお越しください。<br>
+                        また、今回は普段あまり公開していない高広木材さんが在庫しているウエスタンレッドシダーの大型の無垢板の展示即売もします。<br>
+                        樹齢数百年の大木から切り出された大迫力の無垢板がびっくりするような価格で販売されます。<br>
+                        店舗のカウンターやテーブルの天板などをお探しの方はぜひ早めにご来場ください。</p>
+                      <p class="p-common__txt">建築家の方、施工会社の方、デザイナーの方、家具づくりをされる方、DIY好きの個人の方など、木にご興味のある方ならきっと楽しんでいただけると思います。</p>
+                      <p class="p-common__txt">参加をご検討の方はまずはこちらのフォームからお申し込みください。</p>
+                      <div class="p-common__cta">
+                        <div class="p-common__cta-in">
+                          <a class="p-common__cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfdk0FOJ65ecVTsLVUKLC6d47Idu61s2opDi3pRsn0S6EX5CQ/viewform" target="_blank" rel="noopener">無料参加申し込み</a>
+                          <p class="p-common__cta-txt">Googleフォームが開きますので、<br class="only-sp">必要事項を記入のうえエントリーしてください。</p>
+                        </div>
+                      </div>
+                  </div>
+              </section><!-- l-lead -->
+              <section class="p-common l-about">
+                  <div class="p-common__in">
+                      <h2 class="p-common__ttl">STOCK YARD OPENDAYでは<br>こんなことをやります</h2>
+                      <div class="p-about__list">
+                          <div class="p-about__list-item">
+                              <p class="p-about__list-ttl">ウエスタンレッドシダーの無垢板買えます</p>
+                              <div class="p-about__list-box">
+                                  <p class="p-common__txt">普段は公開していない無垢板を一気に展示します。<br>
+                                    板材やサイディング材などをメインに販売されている高広木材さんですが、<br>
+                                    実はウエスタンレッドシダーの大型の無垢板を多数在庫されています。<br>
+                                    普段は倉庫に重ねて保存されているため、具体的な要望がある時だけ、オーダーに近い一部の在庫だけをお見せしているのですが、今回はたくさんの在庫を一気に展示します。<br>
+                                    建築関係の方をストックヤードにご案内する際に一番喜ばれるのがこの無垢板。銘木価格ではなく、通常の木材の立米単価での販売ですので、普段無垢板に手がでない方は、その安さにも驚かれると思います。<br>
+                                    今回、首都圏には一律の配送価格での対応もしていただけます。
+                                  </p>
+                                  <p class="p-about__list-img"><img src="{{ "campaign202306_img_contents_03.png" | asset_url }}" alt="ウエスタンレッドシダーの無垢板買えます"></p>
+                              </div>
+                          </div>
+                          <div class="p-about__list-item">
+                              <p class="p-about__list-ttl">ISHINOMAKI STOOLミニチュアKIT作成ワークショップ</p>
+                              <div class="p-about__list-box">
+                                  <p class="p-common__txt">ロンドンのミュージアムV&A(ヴィクトリア・アンド・アルバートミュージアム）のパーマネントコレクション（永久収蔵品）に2015年にも選ばれたISHINOMAKI STOOLのミニチュアキット（1/4サイズ）を組み立てられるワークショップを行います。<br>
+                                    ワークショップの講師は、なんと石巻工房代表の千葉さん。<br>
+                                    実物と同じ組立工程を体験しながら、千葉さんのお話しを聞ける貴重な機会です。<br><br>
+                                      <span class="p-common__txt-notice">
+                                      ※こちらのワークショップは有料です。<br>
+                                      　参加費：xxxx円（今回のオープンデイ特別価格：通常キット価格7,700円）</span>
+                                  </p>
+                                  <p class="p-about__list-img"><img src="{{ "campaign202306_img_contents_04.png" | asset_url }}" alt="ISHINOMAKI STOOLミニチュアKIT作成ワークショップ"></p>
+                              </div>
+                          </div>
+                          <div class="p-about__list-item">
+                              <p class="p-about__list-ttl">徳田銘木さんの変木・銘木の展示</p>
+                              <div class="p-about__list-box">
+                                  <p class="p-common__txt">奈良・吉野の山中で江戸時代後期に創業した知る人ぞ知る銘木商。<br>
+                                    独自の技術で造林・育林から銘板・銘木の製造までを手がけ、その他にはない特徴的な木を求めて全国から建築家がやってきます。<br>
+                                    今回はそんな徳田銘木さんの中でも特徴的な銘木・変木を厳選して展示します。量は限られますが、普段は奈良の山中までいかないと見られない希少な銘木を見ていただく機会になればと思っています。<br><br>
+                                    午後からは代表の徳田さんも来場されますので、お話ししてみたい方やご相談のある方はぜひ気軽にお越しください。
+                                  </p>
+                                  <p class="p-about__list-img"><img src="{{ "campaign202306_img_contents_05.png" | asset_url }}" alt="徳田銘木さんの変木・銘木の展示"></p>
+                              </div>
+                          </div>
+                          <div class="p-about__list-item">
+                              <p class="p-about__list-ttl">端材、段ボールに詰め放題</p>
+                              <div class="p-about__list-box">
+                                  <p class="p-common__txt">高広木材さんにお願いして、ウエスタンレッドシダーの端材の段ボール詰め放題をやらせていただけることになりました。<br>
+                                    端材といってもそこは材木屋さん。ちょっと大きめの材もありますし、様々な木目のものがたくさんあります。<br>
+                                    120サイズ（450X330X280mm）の段ボールに詰められるだけ詰めてお持ち帰りいただけます。配送対応も可能ですので、ぜひお気に入りの材を見つけてください。<br><br>
+                                      <span class="p-common__txt-notice">
+                                          配送の場合の価格：税込 3,000円<br>
+                                          お持ち帰りの場合の価格：税込 1,000円</span>
+                                  </p>
+                                  <p class="p-about__list-img"><img src="{{ "campaign202306_img_contents_06.png" | asset_url }}" alt="端材、段ボールに詰め放題"></p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </section><!-- l-about -->
+              <section class="p-common l-navigator">
+                  <div class="p-common__in">
+                      <h2 class="p-common__ttl">ナビゲーターのご紹介</h2>
+                      <div class="p-navigator__list">
+                          <div class="p-navigator__list-item">
+                              <p class="p-navigator__list-img"><img src="{{ "campaign202306_img_navigator_01.png" | asset_url }}" alt="渡辺 健人"></p>
+                              <div class="p-navigator__list-box">
+                                  <p class="p-navigator__list-position">高広木材  専務</p>
+                                  <p class="p-navigator__list-name">渡辺 健人</p>
+                                  <p class="p-navigator__list-detail only-pc">1982年東京生まれ<br>
+                                      100年以上つづく木材屋、高広木材の5代目（予定）。<br>
+                                      電子工学を学び10年間エンジニアを務めた後、家業に転職。<br>
+                                      主にカナダ産レッドシダー製品の仕入れと、ストックヤードツアーの案内人を務めている。
+                                  </p>
+                              </div>
+                              <p class="p-navigator__list-detail only-sp">1982年東京生まれ<br>
+                                100年以上つづく木材屋、高広木材の5代目（予定）。<br>
+                                電子工学を学び10年間エンジニアを務めた後、家業に転職。<br>
+                                主にカナダ産レッドシダー製品の仕入れと、ストックヤードツアーの案内人を務めている。
+                              </p>
+                          </div>
+                          <div class="p-navigator__list-item">
+                              <p class="p-navigator__list-img"><img src="{{ "campaign202306_img_navigator_02.png" | asset_url }}" alt="千葉 隆博"></p>
+                              <div class="p-navigator__list-box">
+                                  <p class="p-navigator__list-position">石巻工房　工房長（COO）</p>
+                                  <p class="p-navigator__list-name">千葉 隆博</p>
+                                  <p class="p-navigator__list-detail only-pc">1972年宮城県石巻市生まれ<br>
+                                      高校を卒業後、ログビルダーを目指し建築の道に進むも家業である鮨店で約20年間、鮨職人として従事。2011の津波によって店舗は全壊。その後、 共同代表である芦沢啓治と知り合い、趣味で培ったDIYスキルを見込まれ石巻工房に関わる事になる。その後、鮨店は父親が再建。繁忙期にはバイトとして板場に立つこともある
+                                  </p>
+                              </div>
+                              <p class="p-navigator__list-detail only-sp">1972年宮城県石巻市生まれ<br>
+                                高校を卒業後、ログビルダーを目指し建築の道に進むも家業である鮨店で約20年間、鮨職人として従事。2011の津波によって店舗は全壊。その後、 共同代表である芦沢啓治と知り合い、趣味で培ったDIYスキルを見込まれ石巻工房に関わる事になる。その後、鮨店は父親が再建。繁忙期にはバイトとして板場に立つこともある
+                              </p>
+                          </div>
+                          <div class="p-navigator__list-item">
+                              <p class="p-navigator__list-img"><img src="{{ "campaign202306_img_navigator_03.png" | asset_url }}" alt="徳田"></p>
+                              <div class="p-navigator__list-box">
+                                  <p class="p-navigator__list-position">徳田銘木　代表</p>
+                                  <p class="p-navigator__list-name">徳田</p>
+                                  <p class="p-navigator__list-detail only-pc">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                                  </p>
+                              </div>
+                              <p class="p-navigator__list-detail only-sp">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+                              </p>
+                          </div>
+                          <div class="p-navigator__list-item">
+                              <p class="p-navigator__list-img"><img src="{{ "campaign202306_img_navigator_04.png" | asset_url }}" alt="林 隆宏"></p>
+                              <div class="p-navigator__list-box">
+                                  <p class="p-navigator__list-position">ウッドストックヤード　代表</p>
+                                  <p class="p-navigator__list-name">林 隆宏</p>
+                                  <p class="p-navigator__list-detail only-pc">1978年京都生まれ、愛媛育ち。<br>
+                                      株式会社モノサス代表、株式会社フードハブ・プロジェクト共同創業者。<br>
+                                      Web制作をメインとした会社の代表をしながら、未活用の木材に魅せられ、木材販売事業を始める。単に未活用の木材を販売するのではなく、じぶんたちでつかう、愉しむことを通して未活用材の魅力を伝える活動をしている。
+                                  </p>
+                              </div>
+                              <p class="p-navigator__list-detail only-sp">1978年京都生まれ、愛媛育ち。<br>
+                                株式会社モノサス代表、株式会社フードハブ・プロジェクト共同創業者。<br>
+                                Web制作をメインとした会社の代表をしながら、未活用の木材に魅せられ、木材販売事業を始める。単に未活用の木材を販売するのではなく、じぶんたちでつかう、愉しむことを通して未活用材の魅力を伝える活動をしている。
+                            </p>
+                          </div>
+                      </div>
+                  </div>
+              </section><!-- l-navigator -->
+              <section class="p-common l-cta">
+                  <div class="p-common__in">
+                      <div class="p-common__cta">
+                          <p class="p-common__cta-ttl">
+                              <img class="only-pc" src="{{ "campaign202306_txt_footer_01_pc.png" | asset_url }}" alt="STOCK YARD OPEN DAY 新木場駅徒歩1分の木材ストックヤードに遊びに来ませんか。">
+                              <img class="only-sp" src="{{ "campaign202306_txt_footer_01_sp.png" | asset_url }}" alt="STOCK YARD OPEN DAY 新木場駅徒歩1分の木材ストックヤードに遊びに来ませんか。">
+                          </p>
+                          <div class="p-common__cta-in">
+                            <a class="p-common__cta-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfdk0FOJ65ecVTsLVUKLC6d47Idu61s2opDi3pRsn0S6EX5CQ/viewform">無料参加申し込み</a>
+                            <p class="p-common__cta-txt">Googleフォームが開きますので、<br class="only-sp">必要事項を記入のうえエントリーしてください。</p>
+                          </div>
+                      </div>
+                  </div>
+              </section><!-- l-note -->
+              <section class="p-common l-note">
+                  <div class="p-common__in">
+                      <div class="p-note__list">
+                          <div class="p-note__list-item">
+                              <p class="p-note__list-ttl">開催概要</p>
+                              <div class="p-note__list-box">
+                                  <div class="p-note__list-in">
+                                      <p class="p-note__list-in_ttl">開催日時</p>
+                                      <p class="p-note__list-in_txt">2023年7月1日（土）10:00〜17:00</p>                                    
+                                  </div>
+                                  <div class="p-note__list-in">
+                                      <p class="p-note__list-in_ttl">会場</p>
+                                      <div class="p-note__list-in_box">
+                                          <p class="p-note__list-in_txt">〒136-0082<br>東京都江東区新木場1-6-3<br>（各線新木場駅から徒歩１分）</p>
+                                          <a class="button--campaign202306" href="https://goo.gl/maps/tiSNkxTNwtVvky9F8">Google Map</a>
+                                      </div>
+                                      <p class="p-note__list-in_detail">・時間内は出入り自由です。</p>
+                                      <p class="p-note__list-in_detail">・お車でお越しの方は、数台分の駐車場はございますが、満車の場合はお近くの有料駐車場をご利用ください。</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="p-note__list-item inquiry">
+                              <p class="p-note__list-ttl">問合せ先</p>
+                              <div class="p-note__list-box">
+                                  <div class="p-note__list-in">
+                                      <p class="p-note__list-in_ttl">主催</p>
+                                      <div class="p-note__list-in_box">
+                                        <p class="p-note__list-in_txt">高広木材株式会社</p>
+                                        <a class="button--campaign202306" href="https://takahiro-mokuzai.co.jp/" target="_blank" rel="noopener">公式サイト</a>
+                                      </div>
+                                  </div>
+                                  <div class="p-note__list-in">
+                                      <p class="p-note__list-in_ttl">共催</p>
+                                      <div class="p-note__list-in_box">
+                                          <p class="p-note__list-in_txt">ウッドストックヤード<br><span>Mail：</span><a href="mailto:info@woodstockyard.jp">info@woodstockyard.jp</a></p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </section><!-- l-note -->
+          </div>
+      </section>
+    </div>
+
+    
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

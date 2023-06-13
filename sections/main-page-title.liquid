@@ -1,0 +1,127 @@
+{% stylesheet %}
+
+  .wsy-main-page-title-wrapper {
+    width: calc(100% - 36px);
+    max-width: 1280px;
+    height: 515px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .wsy-main-page-title {
+    margin: 0;
+    padding: 12.1vw 0 0;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .page-subtitle {
+    display: block;
+    font-size: 18px;
+    text-align: center;
+  }
+  .txt-caution {
+    display:flex;
+    align-items: center;
+    margin: 30px 0 0;
+    font-size: 14px;
+    color: #A29953;
+  }
+  .txt-caution::before {
+    display: inline-block;
+    margin-right: 14px;
+    width: 33px;
+    height: 33px;
+    background-color: #A29953;
+    border-radius: 50%;
+    color: #fff;
+    content: "！";
+    font-size: 26px;
+    text-align: center;
+    line-height: 33px;
+  }
+  .wsy-main-page-image {
+    padding-bottom: 65px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .wsy-main-page-title-wrapper {
+      width: calc(100% - 80px);
+      margin: 0 auto;
+      flex-direction: row;
+      align-items: center;
+    }
+    .wsy-main-page-title {
+      margin-right: 20px;
+      padding: 0;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+    }
+    .wsy-main-page-title-about-us svg {
+      width:339.258px;
+      height:72.412px;
+    }
+    .wsy-main-page-title-guide svg {
+      width:295.215px;
+      height:72.412px;
+    }
+    .page-subtitle {
+      padding-top: 14px;
+      font-size: 22px;
+      text-align: left;
+    }
+    .txt-caution {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .wsy-main-page-image {
+      padding-bottom: 0;
+    }
+  }
+{% endstylesheet %}
+
+
+<h1 class="wsy-main-page-title wsy-main-page-title-{{ page.handle }}">
+  {% assign handle = page.handle %}
+  {% case handle %}
+    {% when "about-us" %}
+      <svg xmlns="http://www.w3.org/2000/svg" width="271.406" height="57.93" viewBox="0 0 271.406 57.93">
+        <path id="パス_2499" data-name="パス 2499" d="M-80.8,0h-13.75l-3.984-12.461h-19.922L-122.4,0h-13.672l20.391-56.016h14.961Zm-20.625-22.148-6.016-18.828a24.535,24.535,0,0,1-.937-5.039h-.312a21.365,21.365,0,0,1-.977,4.883l-6.094,18.984ZM-73.809,0V-56.016h20.391q9.375,0,14.414,3.438a11.056,11.056,0,0,1,5.039,9.688,11.466,11.466,0,0,1-3.066,7.93,16.11,16.11,0,0,1-7.832,4.727v.156a15.523,15.523,0,0,1,9.551,4.414,12.345,12.345,0,0,1,3.574,8.945A14.951,14.951,0,0,1-37.246-4.512Q-42.754,0-52.285,0Zm12.617-46.719v13.281h5.547a9.245,9.245,0,0,0,6.152-1.895,6.457,6.457,0,0,0,2.246-5.215q0-6.172-9.219-6.172Zm0,22.656V-9.3h6.836A10.521,10.521,0,0,0-47.5-11.328a6.786,6.786,0,0,0,2.48-5.547,6.331,6.331,0,0,0-2.441-5.273,10.8,10.8,0,0,0-6.816-1.914ZM1.152.977q-12.031,0-19.609-7.832t-7.578-20.41q0-13.281,7.7-21.484t20.391-8.2q11.992,0,19.395,7.852t7.4,20.7q0,13.2-7.676,21.289T1.152.977ZM1.7-46.094a12.7,12.7,0,0,0-10.547,4.98q-3.906,4.98-3.906,13.184,0,8.32,3.906,13.164A12.516,12.516,0,0,0,1.387-9.922a12.642,12.642,0,0,0,10.352-4.707q3.828-4.707,3.828-13.066,0-8.711-3.711-13.555A12.1,12.1,0,0,0,1.7-46.094ZM83.809-24.258Q83.809.977,60.293.977,37.48.977,37.48-23.672V-56.016H50.137v32.5q0,13.594,10.625,13.594,10.43,0,10.43-13.125V-56.016H83.809Zm51.523-21.484H119.355V0H106.7V-45.742H90.8V-56.016h44.531Z" transform="translate(136.074 56.953)"/>
+      </svg>
+      <span class="page-subtitle">わたしたちについて</span>
+    {% when "guide" %}
+      <svg xmlns="http://www.w3.org/2000/svg" width="236.172" height="57.93" viewBox="0 0 236.172 57.93">
+        <path id="パス_2500" data-name="パス 2500" d="M-68.437-3.75Q-76.641.977-88.828.977q-13.516,0-21.309-7.48t-7.793-20.605q0-13.2,8.516-21.523t22.656-8.32a46.02,46.02,0,0,1,15.7,2.461v11.836q-6.484-3.75-15.859-3.75a17.026,17.026,0,0,0-12.793,5.1q-4.941,5.1-4.941,13.613,0,8.633,4.434,13.359t11.973,4.727A16.665,16.665,0,0,0-81.055-10.9V-21.836H-92.266V-31.914h23.828Zm56.563-20.508Q-11.875.977-35.391.977-58.2.977-58.2-23.672V-56.016h12.656v32.5q0,13.594,10.625,13.594,10.43,0,10.43-13.125V-56.016h12.617ZM12.93,0H.313V-56.016H12.93ZM25.664,0V-56.016H45.508q29.844,0,29.844,27.3,0,13.086-8.145,20.9T45.508,0ZM38.281-45.742v35.508h6.25q8.2,0,12.871-4.922t4.668-13.4q0-8.008-4.629-12.6t-12.988-4.59ZM118.242,0H84.648V-56.016h32.3v10.273H97.266v12.461h18.32v10.234H97.266v12.813h20.977Z" transform="translate(117.93 56.953)"/>
+      </svg>
+      <span class="page-subtitle">ご利用ガイド</span>
+      <span class="txt-caution">かならずきちんとお読みください。</span>
+    {% else %}
+       This is not a cake nor a cookie
+  {% endcase %}
+</h1>
+
+<div class="wsy-main-page-image main-page-image-{{ page.handle }}">
+  {% assign handle = page.handle %}
+  {% case handle %}
+    {% when "about-us" %}
+      <img src="{{ images['about-us_hero_01.png'] | image_url }}" width="100%">
+    {% when "guide" %}
+      <img src="{{ images['guide_hero_01.png'] | image_url }}" width="100%">
+    {% else %}
+       This is not a cake nor a cookie
+  {% endcase %}
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "wsy-page-title",
+    "tag": "section",
+    "class": "wsy-main-page-title-wrapper",
+    "settings": [
+    ]
+  }
+{% endschema %}

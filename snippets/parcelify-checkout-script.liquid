@@ -1,0 +1,8 @@
+<script type="text/javascript">
+  const checkoutButtons = document.querySelectorAll('form[action="/cart"] [type="submit"], [type="submit"][form="cart"]');
+  checkoutButtons.forEach(button => button.disabled = true);
+
+  window.addEventListener('parcelify_loaded', function(event) {
+    checkoutButtons.forEach(button => button.disabled = false);
+  });
+</script>

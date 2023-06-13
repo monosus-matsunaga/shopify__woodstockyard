@@ -1,0 +1,324 @@
+<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'lp_campaign_202211.css' | asset_url }}">
+<meta property="og:image:secure_url" content="{{ 'ogp_campaign202211.jpg' | asset_url }}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous" defer="defer"></script>
+<script src="{{ 'lp_campaign_202211.js' | asset_url }}"></script>
+
+<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'lp_campaign_202211.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .page-width--narrow {
+    max-width: 100%;
+  }
+
+  .page-campaign-lp .p-kv__cover {
+    background-image: url("{{ 'campaign_bg-kv_sp@2x.jpg' | asset_url }}");
+  }
+
+  @media screen and (min-width: 750px) {
+    .page-campaign-lp .p-kv__cover {
+      background-image: url("{{ 'campaign_bg-kv.jpg' | asset_url }}");
+    }
+  }
+
+  .page-campaign-lp .p-wanted__cover {
+    background-image: url("{{ 'campaign_bg-wanted_sp@2x.jpg' | asset_url }}");
+  }
+
+  @media screen and (min-width: 750px) {
+    .page-campaign-lp .p-wanted__cover {
+      background-image: url("{{ 'campaign_bg-wanted.jpg' | asset_url }}");
+    }
+  }
+  .page-campaign-lp .p-entry__process+.p-entry__process:before {
+    background-image: url("{{ 'campaign_ico_arrow-bottom.png' | asset_url }}");
+  }
+
+  .page-campaign-lp .p-gallery__arrows .slick-prev {
+    background-image: url("{{ 'campaign_ico_arrow-left.png' | asset_url }}");
+  }
+
+  .page-campaign-lp .p-gallery__arrows .slick-next {
+    background-image: url("{{ 'campaign_ico_arrow-right.png' | asset_url }}");
+  }
+
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding page-campaign-lp">
+  <div class="rte">
+    <div class="lp_campaign_202211">
+      <section class="p-kv">
+        <div class="p-kv__inn">
+          <div class="p-kv__cover">　</div>
+          <h2 class="p-kv__title">
+            <picture class="p-kv__title-picture">
+              <source media="(max-width: 749px)" srcset="{{ "txt_kv-title_sp.png" | file_url }}, {{ "txt_kv-title_sp@2x.png" | file_url }} 2x"/>
+              <source media="(min-width: 750px)" srcset="{{ "txt_kv-title.png" | file_url }}"/>
+              <img class="p-kv__title-image" src="{{ "txt_kv-title.png" | file_url }}" alt="WANTED! 施主求ム!"/>
+            </picture>
+          </h2>
+          <p class="p-kv__text">
+            <picture class="p-kv__text-picture">
+              <source media="(max-width: 749px)" srcset="{{ "txt_kv-text_sp.png" | file_url }}, {{ "txt_kv-text_sp@2x.png" | file_url }} 2x"/>
+              <source media="(min-width: 750px)" srcset="{{ "txt_kv-text.png" | file_url }}"/>
+              <img class="p-kv__text-image" src="{{ "txt_kv-text.png" | file_url }}" alt="スキーマ建築計画×TANKと全長6m・2.5tの巨大丸太を一本丸々使った建築・空間づくり、やりませんか。"/>
+            </picture>
+          </p>
+          <picture class="p-kv__picture">
+            <source media="(max-width: 749px)" srcset="{{ "pic_kv-wanted_sp.png" | file_url }}, {{ "pic_kv-wanted_sp@2x.png" | file_url }} 2x"/>
+            <source media="(min-width: 750px)" srcset="{{ "pic_kv-wanted.png" | file_url }}"/>
+            <img class="p-kv__image" src="{{ "pic_kv-wanted.png" | file_url }}" alt="長坂常 YOU 福元成武"/>
+          </picture>
+        </div>
+      </section>
+      <section class="p-story">
+        <div class="p-story__inn">
+          <h2 class="p-story__title">
+            <picture class="p-story__title-picture">
+              <source media="(max-width: 749px)" srcset="{{ "txt_story-title_sp.png" | file_url }}, {{ "txt_story-title_sp@2x.png" | file_url }} 2x"/>
+              <source media="(min-width: 750px)" srcset="{{ "txt_story-title.png" | file_url }}"/>
+              <img class="p-story__title-image" src="{{ "txt_story-title.png" | file_url }}" alt="story"/>
+            </picture>
+          </h2>
+          <article class="p-story__article">
+            <h3 class="p-story__article-title">長坂さんと、ウエスタンレッドシダーの巨大丸太との出会い。</h3>
+            <figure class="p-story__article-figure">
+              <picture class="p-story__article-picture"><img class="p-story__article-image" src="{{ "pic_story-01.jpg" | file_url }}" alt="" loading="lazy"/></picture>
+              <figcaption class="p-story__article-figurecaption">巨大丸太を眺める長坂さん。</figcaption>
+            </figure>
+            <p class="p-story__article-text">半年ほど前のこと。 <br/> とある店舗に使うための大きな無垢材を探していた長坂さんを新木場のストックヤードに案内していました。 <br/>
+              <br/> 目的の木材はすんなり見つかったのですが、他にもたくさんある面白そうな木材を紹介していたところ、ビニールシートに包まれた大きな丸太の前で長坂さんの足が止まります。 <br/>
+              <br/> ビニールシートを剥いでみると、中から出てきたのは長さ6m、直径1.4mの巨大なウエスタンレッドシダーの丸太。 <br/> 巨大なだけでなく、ウエスタンレッドシダーにしては珍しく大きくねじれ、芯も大きく偏り、外皮が丸太の中に入り込んだりしています。 <br/>
+              <br/> 製材してもどれくらい材がとれるかわからない <br/>
+              <br/> そのクセだらけの巨大丸太を見た瞬間に、長坂さんの目が輝きます。 <br/> 「この丸太でマグロの解体みたいなことをやってみたいなぁ・・・」 <br/> そんなひとことから、いま、まさにひとつのプロジェクトがはじまろうとしています。 <br/>
+              <br/> まず長坂さんが声をかけたのがTANKの福元さん。数多くのプロジェクトを長坂さんとともに手がけ、直近では長坂さんの尾道でのLLOVE HOUSE ONOMICHIのプロジェクトを全面的にサポートした名うての施工集団を率いています。 <br/>
+              <br/> 日本で言えば御神木クラスの大きさの、けれどもねじれてクセだらけの丸太を使って、長坂さんと福元さんとで建築・空間づくりをしようというのがこのプロジェクトです。 <br/>
+              <br/> 今回はこのプロジェクトの「施主になりたい！」という方を1名（もしくは1社）だけ募集します。</p>
+            <h3 class="p-story__article-title">アラスカの寒さと強風に耐えて数百年の時を過ごした巨大な丸太。</h3>
+            <p class="p-story__article-text">この巨大丸太が育まれたのは北米大陸アラスカ南東部。 <br/> カナダの西海岸と違い、風が強いこの地で育つウエスタンレッドシダーは、強い風に耐えるからか、ねじれていることがあります。 <br/> 中でもこの丸太は極端にねじれていて、6mの長さの中で180度近くもねじれています。</p>
+            <figure class="p-story__article-figure">
+              <picture class="p-story__article-picture"><img class="p-story__article-image" src="{{ "pic_story-02.jpg" | file_url }}" alt="" loading="lazy"/></picture>
+              <figcaption class="p-story__article-figurecaption">表面に現れている線を頼りに観察してみると、手前ではてっぺんにある線が6m先ではほぼ地面側にまでまわりこんでいる。</figcaption>
+            </figure>
+            <p class="p-story__article-text">しかも根本の方の断面を見ると、木の芯が極端に偏っていて、木の皮が内部に入り込んだりもしています。 <br/> いわゆる偏芯木というものですが、ここまで極端に芯が偏っているものは珍しく、よほどなにかしらのストレスがかかり続ける環境の中で <br/> 数百年の年月を耐えてきたことでしょう。 <br/>
+              <br/> それにしてもこんなにも樹皮が内部に食い込んでいることは木のプロでもなかなか見たことがないらしく、ましてやこのように日本にまで <br/> たどり着くことはごくごく稀なことだそうです。</p>
+            <figure class="p-story__article-figure">
+              <picture class="p-story__article-picture"><img class="p-story__article-image" src="{{ "pic_story-03.jpg" | file_url }}" alt="" loading="lazy"/></picture>
+              <figcaption class="p-story__article-figurecaption">左側のうっすらチョークで丸く囲まれているところが芯。右上のほうから芯のところまで樹皮が食い込んでいる。</figcaption>
+            </figure>
+            <p class="p-story__article-text">このようにねじれていたり、樹皮が内部に食い込んでいる材は、製材しても商品として売れる製品材がどれくらいとれるかわからないため、そもそも日本に輸入され、市場に出回ることがほとんどないのです。 <br/>
+              <br/> けれども、この丸太になんとも言えない魅力を感じて、木材会社の社長が数年前に仕入れてきたそうです。 <br/> 最初から細かく製材して売るつもりはなく、「誰かこの丸太の魅力に気づいて、使いこなしてくれる人がいれば譲りたい」と思いストックヤードで大切に保管されてきました。 <br/>
+              <br/> 正確な樹齢は不明ですが、育ちにくい環境だったからか、ゆっくりゆっくりと成長したようで、人差し指一本の太さの間に10本以上の年輪が詰まっていました。丸太の半径を考えると、数百年以上経過していることだけは確かです。 <br/> 丸太を下見に来た福元さんと一緒に少しだけ数えてみましたが、あまりに木目が細かく詰まっていて途中で数えられなくなってしまいました。</p>
+            <figure class="p-story__article-figure">
+              <picture class="p-story__article-picture"><img class="p-story__article-image" src="{{ "pic_story-04.jpg" | file_url }}" alt="" loading="lazy"/></picture>
+              <figcaption class="p-story__article-figurecaption">かわるがわる年輪を数えてみたものの、木目が詰まりすぎていてすぐに迷子に。結局数えることは諦めました。</figcaption>
+            </figure>
+            <h3 class="p-story__article-title">なぜ長坂さんはクセだらけのウエスタンレッドシダーの丸太に惹かれたのか。</h3>
+            <figure class="p-story__article-figure">
+              <picture class="p-story__article-picture"><img class="p-story__article-image" src="{{ "pic_story-05.jpg" | file_url }}" alt="" loading="lazy"/></picture>
+            </figure>
+            <p class="p-story__article-text">福元さんが丸太を下見に来たこの日、長坂さんは遠くオランダに。オンラインで繋いで、どんなプロジェクトにできるかを打ち合わせしました。 <br/>
+              <br/> その中で、私たちが聞きたかったのは、長坂さんがクセだらけで扱いにくそうなウエスタンレッドシダーの巨大丸太のどんなところに惹かれたのかということ。 <br/> これまでの会話の中でなんとなくは聞いていましたが、改めて伺ってみました。</p>
+            <p class="p-story__article-text">私たちの問いかけに、一瞬だけ考えてから長坂さんが発したのは <br/> 「想像ができないのがいいんだよね・・・」というひとこと。 <br/> 巨大で、ねじれていて、芯も偏っていて、樹皮まで食い込んでいる。木を割ってみた時に中がどんな風になっているか外からは想像することすらできない。その想像できない状況から空間づくりをしてみたいのだそう。 <br/>
+              <br/> そして長坂さんが最初から何度も口にしているのは「マグロの解体」というキーワード。 <br/> 刺身にされたものや柵取りされたものを調理するのとは違い、まるっと大きなもののどこに刃を入れるのか、どうやっていくのかを試行錯誤してゆくプロセスこそが今回のプロジェクトの醍醐味なのかもしれません。 <br/>
+              <br/> 一般的に建築においての与件は施主の要望や、土地や物件の現況が強くあるものだと思います。 <br/> しかし、今回一番力を持っている与件はこの丸太とも言えます。どのような材がとれるのかすらわからない状況で、まずは丸太をいくつかに解体してみて、その状態にインスピレーションを得てプロジェクトが進んでいくことになるのだと思います。 <br/>
+              <br/> そして、そんなプロジェクトの施工をやるのは「TANKさんしかいない」と長坂さんが真っ先に声をかけました。 <br/> 福元さんにもそんなプロジェクトへのモチベーションをお聞きしてみました。 <br/>
+              <br/> まず最初に福元さんの口から出たのは「僕は常さんのファンなんです」という言葉。 <br/> 「もちろん、いち建築ファンとしても好きだし、施工する立場としても常さんのデザインしたものは、本当に格好いい。 <br/> だから常さんとやるプロジェクトならぜったいにやりたいし、今回のこのプロジェクトも、ぜったいに自分たちがやりたい。それにこんなプロジェクト二度とないかもしれないじゃないですか。」 <br/>
+              <br/> 「それに常さんの言うように、ほんとにどんな材がとれるのか想像もつかない丸太だけど、そういう不安もあるし、だからこそ楽しみもある。僕たちは『どうやったら実現できるんだっけ・・・』ということにチャレンジするのが大好きなんですよね。」</p>
+          </article>
+        </div>
+      </section>
+      <section class="p-wanted">
+        <div class="p-wanted__cover">　</div>
+        <div class="p-wanted__inn">
+          <h2 class="p-wanted__title">
+            <picture class="p-wanted__title-picture">
+              <source media="(max-width: 749px)" srcset="{{ "txt_wanted-title_sp.png" | file_url }}, {{ "txt_wanted-title_sp@2x.png" | file_url }} 2x"/>
+              <source media="(min-width: 750px)" srcset="{{ "txt_wanted-title.png" | file_url }}"/>
+              <img class="p-wanted__title-image" src="{{ "txt_wanted-title.png" | file_url }}" alt="WANTED!"/>
+            </picture>
+          </h2>
+          <h3 class="p-wanted__subTitle">長坂さん、福元さんと一緒に、 <br class="only-sp"/> 巨大丸太を一本まるまる <br class="only-sp"/> つかった建築・空間づくりの <br class="only-sp"/> 施主になりませんか？</h3>
+          <p class="p-wanted__text">今回、このウエスタンレッドシダーの巨大丸太をつかったプロジェクトの施主になっていただける方を募集します。 <br/> 施主になっていただけるのは1名・もしくは1社のみ。 <br/> この巨大丸太を一本まるまるお買い上げいただいたうえで、スキーマ建築計画さんに設計を、TANKさんに施工を依頼していただけることが条件です。 <br/> 「この丸太だけを買いたい」というご要望には残念ながらお応えできません。 <br/>
+            <br/> 以下概要を箇条書きで整理しておきます。このプロジェクトの施主になることに興味のある方はぜひよくお読みください。</p>
+          <div class="p-wanted__panel">
+            <div class="p-wanted__panel-inn">今回の丸太は一般に流通している製材品を切り出すには向いていない、ねじれやクセのある丸太です。 <br/> そのクセを個性や魅力と捉えていただける方にはぴったりですが、建材として流通しているウエスタンレッドシダーの板材や、内外壁材の質感を求められている場合はイメージが異なる可能性が高いと思います。 <br/> 「製材してみるまでわからない」「割ってみるまで想像ができない」という状況を、長坂さんや福元さんや私たちWOOD STOCK YARDと　 <br/> 一緒に楽しめる方とプロジェクトをできればと願っています。</div>
+          </div>
+          <div class="p-wanted__panel">
+            <div class="p-wanted__panel-inn">細かな製材や、新木場から建築現場への配送費は別途実費をご負担ください。 <br/> 丸太の中身を確認するための4〜5カット程度の製材費と新木場のストックヤードと製材所の間の運送費は丸太の価格に含まれていますが、そこから先の製材費と建築を実施する場所への配送費は別途実費をご負担いただきます。 <br/> 当初の4〜5カット程度の製材は、丸太の中身を確認し、どのような使い方ができるかの検討のために行います。 <br/> その後の製材費については、どれくらい細かく製材するかによって大きく異なりますが、5万円から高くても20〜30万円くらいまでに収まると思います。</div>
+          </div>
+          <div class="p-wanted__panel">
+            <div class="p-wanted__panel-inn">ウエスタンレッドシダーの特性については別途こちらのページをご覧ください。</div>
+          </div>
+          <div class="p-wanted__panel">
+            <div class="p-wanted__panel-inn">設計をスキーマ建築計画さんに、施工をTANKさんに依頼していただける方に丸太をお譲りします。 <br/> 設計・施工の費用は当然ながらどのような工事をするかによって大きく異なりますので、計画を練りながらご相談いただくことになります。 <br/> 予算の上限が明確に決まっている場合は、お問い合わせの際に併せてお伝えいただくとスムーズかもしれません。</div>
+          </div>
+          <div class="p-wanted__panel">
+            <div class="p-wanted__panel-inn">内装・外装を含む建築・空間づくりのプロジェクトに限定させてください。 <br/> 家具などのプロダクトを作成するようなプロジェクトは対象から外させていただきます。 <br/> ただし、空間の構成に不可欠な家具などはこの限りではありません。</div>
+          </div>
+          <div class="p-wanted__panel">
+            <div class="p-wanted__panel-inn">WOOD STOCK YARDからの取材および記事掲載をお受けいただくことをご了承ください。</div>
+          </div>
+          <div class="p-wanted__panel">
+            <div class="p-wanted__panel-inn">プロジェクトの実施については、内容をヒアリングのうえお受けできるかどうか回答させていただくことをご了承ください。 <br/> お申し込みをいただいた後、ご要望のプロジェクト内容をヒアリングさせていただいたうえで、スキーマ建築計画・TANKさんと協議のうえでプロジェクトをお受けできるかをご回答することをあらかじめご了承ください。 <br/> また、お申し込みが複数あった場合も、先着順ではなくご要望をお伺いしたうえでお受けするプロジェクトを選定させていただきます。</div>
+          </div>
+        </div>
+      </section>
+      <section class="p-project">
+        <div class="p-project__inn">
+          <h2 class="p-project__title">
+            <picture class="p-project__title-picture">
+              <source media="(max-width: 749px)" srcset="{{ "txt_project-title_sp.png" | file_url }}, {{ "txt_project-title_sp@2x.png" | file_url }} 2x"/>
+              <source media="(min-width: 750px)" srcset="{{ "txt_project-title.png" | file_url }}"/>
+              <img class="p-project__title-image" src="{{ "txt_project-title.png" | file_url }}" alt="Thoughts on the Project"/>
+            </picture>
+          </h2>
+          <h3 class="p-project__subTitle">プロジェクトへの想い</h3>
+          <ul class="p-project__cards">
+            <li class="p-project__card">
+              <picture class="p-project__card-picture"><img class="p-project__card-image" src="{{ "pic_project-01.png" | file_url }}" alt=""/></picture>
+              <span class="p-project__card-lead">スキーマ建築計画</span>
+              <h4 class="p-project__card-title">長坂 常</h4>
+              <p class="p-project__card-text">日常何気なく製材されたり、合板にされた材料を使っていて、自分達が当たり前のように指示しているものがどのくらいの量の木を使ってるのか？一本の木がどのくらいの材料になるのか？あまりわかってないことをこの話を受け気づきました。<br>このプロジェクトを通し、改めてそのことを理解し、そして多くの方にも理解いただけたらと思ってます。予想外に多いのか？いや思ったほどでもないのか？やってみないとわからないですね。とにかく、楽しみです。</p>
+            </li>
+            <li class="p-project__card">
+              <picture class="p-project__card-picture"><img class="p-project__card-image" src="{{ "pic_project-02.png" | file_url }}" alt=""/></picture>
+              <span class="p-project__card-lead">TANK</span>
+              <h4 class="p-project__card-title">福元 成武</h4>
+              <p class="p-project__card-text">普段から、作りたいものを製材された規格サイズを基準にどんなサイズがどれだけ取れるか考えるのですが、丸太から材を切り出すこと自体が初めてで、ましてやあの超大木。<br>「規格外サイズ」というほぼ？制約がない？ものになったとき、普段の作り方ではなくんるんだろうか。変わるとしたらどんなものになるんだろう。そうは言っても規格サイズに慣れすぎていてなにも変わらないんだろうか。<br>なにが起こるのかとても楽しみです。</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="p-entry">
+        <div class="p-entry__inn">
+          <h2 class="p-entry__title">
+            <picture class="p-entry__title-picture">
+              <source media="(max-width: 749px)" srcset="{{ "txt_entry-title_sp.png" | file_url }}, {{ "txt_entry-title_sp@2x.png" | file_url }} 2x"/>
+              <source media="(min-width: 750px)" srcset="{{ "txt_entry-title.png" | file_url }}"/>
+              <img class="p-entry__title-image" src="{{ "txt_entry-title.png" | file_url }}" alt="ENTRY"/>
+            </picture>
+          </h2>
+          <h3 class="p-entry__subTitle">プロジェクトへの <br class="only-sp"/> お申し込み方法と流れ</h3>
+          <ul class="p-entry__processes">
+            <li class="p-entry__process">
+              <h4 class="p-entry__process-title">ご興味のある方はまず <br class="only-sp"/> エントリーください。</h4>
+              <div class="p-entry__process-panel">
+                <div class="p-entry__process-panel-inn">まずはどのようなプロジェクトをお考えなのかをお聞かせください。 <br/> 下部のフォームから必要項目を記入のうえ、2月28日（火）までにエントリーください。 <br/> エントリーだけではまだ丸太の購入の契約ではありませんのでご安心ください。 <br/> 「興味がある」という状態でもまずはエントリーいただき、じっくりとご検討ください。</div>
+              </div>
+            </li>
+            <li class="p-entry__process">
+              <h4 class="p-entry__process-title">エントリーいただいた方を対象に丸太の見学会を行います。</h4>
+              <div class="p-entry__process-panel">
+                <div class="p-entry__process-panel-inn">エントリーいただいた方を対象に新木場・若洲のストックヤードにて実物の丸太の見学会を行います。 <br/> 実物を見ていただいたうえで、正式にプロジェクトにお申し込みされるかどうかご検討ください。 <br/> また、エントリーしていない方からの丸太の見学のみのご要望には大変申し訳ありませんがお応えできません。 <br/> まずはフォームからエントリーください。 <br/> 場所は、東京都の新木場もしくは若洲の木材ストックヤードです。日程につきましては別途エントリーいただいた方に個別にご連絡いたします。</div>
+              </div>
+            </li>
+            <li class="p-entry__process">
+              <h4 class="p-entry__process-title">正式に申し込みされた方に個別に詳細をヒアリングいたします。</h4>
+              <div class="p-entry__process-panel">
+                <div class="p-entry__process-panel-inn">正式にお申し込みいただいた方には個別に詳細のプロジェクトのプランやご要望、スケジュール、ご予算などについてヒアリングをさせていただきます。 <br/> ヒアリングの進め方についてはお申し込み件数やプロジェクト規模によって検討しますので、別途WOOD STOCK YARDよりご連絡いたします。 <br/> またこの段階で、実現性の低いプロジェクトや、今回の丸太ではご要望にお応えできないプロジェクトについては、お断りする場合がありますことをご了承ください。</div>
+              </div>
+            </li>
+            <li class="p-entry__process">
+              <h4 class="p-entry__process-title">長坂さん、福元さんとの打合せを経てプロジェクトを決定します。</h4>
+              <div class="p-entry__process-panel">
+                <div class="p-entry__process-panel-inn">詳細のヒアリング内容をもとに、長坂さん、福元さんにも打合わせに参加いただきます。 <br/> この打ち合わせをもとに一緒に実行させていただくプロジェクトの最終の決定をいたします。 <br/> 魅力的なプロジェクトが多数あった場合も、心苦しいですが、今回の丸太でお受けできるプロジェクトは1件のみです。</div>
+              </div>
+            </li>
+          </ul>
+          <div class="p-entry__button">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdcdsUyKU5LRLPmTiLVWlyr7lXooIhQK4UwgGBFvYbsJ7CyDQ/viewform?usp=pp_url" class="p-entry__button-link" target="_blank" rel="noopener noreferrer">エントリーフォーム</a>
+            <span class="p-entry__button-text"> Googleフォームが開きますので、 <br class="only-sp"/> 必要事項を記入のうえエントリーしてください。 </span></div>
+        </div>
+      </section>
+      <section class="p-gallery">
+        <div class="p-gallery__inn">
+          <h2 class="p-gallery__title">丸太フォトギャラリー</h2>
+          <div class="p-gallery__slider" data-js-slider="root">
+            <div class="p-gallery__figures" data-js-slider="main">
+              <figure class="p-gallery__figure">
+                <picture class="p-gallery__picture"><img class="p-gallery__image" src="{{ "campaign_gallery-01.jpg" | asset_url }}" alt=""></picture>
+                <figcaption class="p-gallery__figurecaption">今回の丸太の全景。長さ約6m、2.5t以上ある超大型の丸太です。</figcaption>
+              </figure>
+              <figure class="p-gallery__figure">
+                <picture class="p-gallery__picture"><img class="p-gallery__image" src="{{ "campaign_gallery-02.jpg" | asset_url }}" alt=""></picture>
+                <figcaption class="p-gallery__figurecaption">丸太の元口（地面に近い方）の断面。最大で1.4mあります。<br>うっすら引いてある白い丸が木の芯。ここまで大きく芯が偏っているのはとても珍しい。</figcaption>
+              </figure>
+              <figure class="p-gallery__figure">
+                <picture class="p-gallery__picture"><img class="p-gallery__image" src="{{ "campaign_gallery-03.jpg" | asset_url }}" alt=""></picture>
+                <figcaption class="p-gallery__figurecaption">元口断面のアップ。木の表面から芯にかけて割れが入っているだけでなく、<br>樹皮が食い込んでいます。どんな育ち方をしたのかとても興味深いです。</figcaption>
+              </figure>
+              <figure class="p-gallery__figure">
+                <picture class="p-gallery__picture"><img class="p-gallery__image" src="{{ "campaign_gallery-04.jpg" | asset_url }}" alt=""></picture>
+                <figcaption class="p-gallery__figurecaption">樹皮の食い込みのアップ。</figcaption>
+              </figure>
+              <figure class="p-gallery__figure">
+                <picture class="p-gallery__picture"><img class="p-gallery__image" src="{{ "campaign_gallery-05.jpg" | asset_url }}" alt=""></picture>
+                <figcaption class="p-gallery__figurecaption">末口（地面から遠い方）の断面。こちらには樹皮の食い込みはありません。</figcaption>
+              </figure>
+              <figure class="p-gallery__figure">
+                <picture class="p-gallery__picture"><img class="p-gallery__image" src="{{ "campaign_gallery-06.jpg" | asset_url }}" alt=""></picture>
+                <figcaption class="p-gallery__figurecaption">木の表面。ねじれがあるため、木の表面の模様もねじれています。</figcaption>
+              </figure>
+              <figure class="p-gallery__figure">
+                <picture class="p-gallery__picture"><img class="p-gallery__image" src="{{ "campaign_gallery-07.jpg" | asset_url }}" alt=""></picture>
+                <figcaption class="p-gallery__figurecaption">木の表面のアップ。</figcaption>
+              </figure>
+            </div>
+            <div class="p-gallery__arrows" data-js-slider="arrows"></div>
+            <div class="p-gallery__dots" data-js-slider="dots"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

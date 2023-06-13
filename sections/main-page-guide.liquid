@@ -1,0 +1,182 @@
+<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  /***** guide styles *****/
+  .page-guide-main {
+    max-width: 100rem;
+  }
+  .page-guide-main h2,
+  .page-guide-main .txt-guide-lead,
+  .page-guide-main h4,
+  .page-guide-main p {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 75.2rem;
+  }
+  .page-guide-main h2 {
+    margin-bottom: 50px;
+    font-size: 27px;
+  }
+  .page-guide-main .txt-guide-lead {
+    font-size: 16px;
+  }
+  .page-guide-main strong {
+    color: #8A733B;
+  }
+  .page-guide-main hr {
+    margin: 150px 0 0;
+    width: 100%;
+  }
+  .page-guide-main hr.hr-guide-01 {
+    height: 5px;
+    background-color: #A29953;
+  }
+  @media screen and (min-width: 750px) {
+    .page-guide-main h2 {
+      margin-bottom: 100px;
+      font-size: 34px;
+    }
+    .page-guide-main .txt-guide-lead {
+      font-size: 20px;
+    }
+  }
+
+
+  /*** h3-guide-details ***/
+  h3.h3-guide-details {
+    margin: 0;
+    padding-top: 40px;
+    font-size: 22px;
+  }
+  h3.h3-guide-details svg {
+    float: left;
+  }
+  h3.h3-guide-details#sec-01 svg {
+    margin-right: 20px;
+  }
+  h3.h3-guide-details#sec-02 svg {
+    margin-right: 10px;
+  }
+  h3.h3-guide-details::after {
+    height: 238px;
+    display: block;
+    content: "";
+    background: url({{ "guide_illust_01.png" | asset_url }}) center center no-repeat;
+    background-size: contain;
+  }
+  h3.h3-guide-details#sec-02::after {
+    background: url({{ "guide_illust_02.png" | asset_url }}) center center no-repeat;
+    background-size: contain;
+  }
+  
+  @media screen and (min-width: 750px) {
+    h3.h3-guide-details {
+      display: flex;
+      align-items: center;
+      font-size: 30px;
+    }
+    h3.h3-guide-details * {
+      flex-shrink: 0;
+    }
+    h3.h3-guide-details svg {
+      flex-grow: 0;
+    }
+    h3.h3-guide-details#sec-01 svg {
+      width: 36.33px;
+      height: 85.9px;
+    }
+    h3.h3-guide-details#sec-02 svg {
+      width: 56.02px;
+      height: 85.43px;
+    }
+    h3.h3-guide-details::after {
+      width: 430px;
+      height: 270px;
+      flex-shrink: 1;
+      flex-grow: 0;
+    }
+  }
+
+
+  /*** .page-guide-main h4 ***/
+  .page-guide-main h4 {
+    margin-top: 70px;
+    margin-bottom: 40px;
+    font-size: 19px;
+    text-decoration: underline;
+  }
+  @media screen and (min-width: 750px) {
+    .page-guide-main h4 {
+      margin-top: 100px;
+      font-size: 24px;
+    }
+  }
+
+
+  /*** .page-guide-main p ***/
+  @media screen and (min-width: 750px) {
+    .page-guide-main p {
+      font-size: 18px;
+    }
+  }
+{%- endstyle -%}
+
+
+
+<div class="page-width page-width section-{{ section.id }}-padding page-guide-main">
+  <div class="rte">
+    {{ page.content }}
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

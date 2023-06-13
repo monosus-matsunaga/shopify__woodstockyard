@@ -1,0 +1,53 @@
+<!-- cart customize Do not change // -->
+{% assign variants = "" %}
+ <div style="display:none;">
+ {%- for variant in product.variants -%}
+  <p>variation: {{ variant.metafields.custom._pdct-type }}</p>
+  <p>option: {{ variant.option1 }}</p>
+  <p>selected: {{ variant.selected }}</p>
+  {% assign variants = variants | append: variant.option1|  append: ":" | append: variant.metafields.custom._pdct-type | append: ',' %}
+  {%- endfor -%}
+</div>
+
+<p id="variants" >{{ variants }}</p>
+
+<p class="line-item-property__field"><input id="size" type="text" name="properties[size]" value=""></p>
+<p class="line-item-property__field"><input id="deliveryDate" type="text" name="properties[deliveryDate]" value=""></p>
+
+<script>
+  const selectElements = document.querySelector('select[name="options[サイズ]"]');
+
+  function setSelectedValue() {
+      const variants = document.getElementById('variants');        
+      const sizeElement = document.getElementById('size')
+      let variantsArray = [];
+      if(variants) {
+          const arr = variants.innerText.split(',');
+          variantsArray = arr.map(function(a){
+              return {
+                  variation: a.split(':')[0],
+                  size: a.split(':')[1]
+              }
+          })                        
+      }
+
+      console.log(selectElements.options);
+      if(selectElements.options[selectElements.selectedIndex].value) {
+        const selectedIndexValue = selectElements.options[selectElements.selectedIndex].value;
+          console.log(selectedIndexValue)
+          variantsArray.forEach(function(variant){
+              if(variant.variation === selectedIndexValue && sizeElement) {
+                 sizeElement.value = variant.size;
+              }
+          })
+      }
+  }
+
+  // init
+  setSelectedValue();
+
+  // set change event
+  selectElements.addEventListener('change', setSelectedValue)
+  
+</script>    
+<!-- // cart customize Do not change -->

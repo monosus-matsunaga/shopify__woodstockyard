@@ -1,0 +1,244 @@
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .page-width--narrow {
+      max-width: 100rem;
+      padding-left: 9rem;
+      padding-right: 9rem;
+    }
+  }
+
+  /***** h1-faq *****/
+  h1.h1-faq {
+    margin: 0 auto 40px;
+    width: 100%;
+    max-width: 690px;
+    text-align: center;
+  }
+  h1.h1-faq img {
+    width: 100%;
+  }
+
+  /***** .qa-list *****/
+  .list-faq > div {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+  }
+  .list-faq > div:first-child {
+    border-top: 1px solid #ccc;
+  }
+  .list-faq > div::before,
+  .list-faq > div::after {
+    position: absolute;
+    top: 30px;
+    right: 5px;
+    display: block;
+    width: 25px;
+    height: 1px;
+    margin: 0;
+    content: '';
+    background: #3E3E3E;
+  }
+  .list-faq > div::after {
+    transform: rotate(-90deg);
+    transition: all 0.5s 0s ease;
+  }
+  .list-faq .is-open::after {
+    transform: rotate(0deg);
+  }
+  .list-faq dt {
+    margin: 0;
+    padding: 16px 35px 16px 5px;
+    font-size: 16px;
+  }
+  .list-faq dt svg {
+    float: left;
+  }
+  .list-faq dt span {
+    margin: 0 0 0 37px;
+    display: block;
+  }
+  .list-faq dd {
+    position: relative;
+    display: none;
+    height: auto;
+    margin: 0;
+    padding: 16px 0 90px 5px;
+    border-top: 1px solid #ccc;
+  }
+  .list-faq dd svg {
+    float: left;
+  }
+  .list-faq dd div {
+    margin: 0 0 0 37px;
+  }
+  .list-faq dd p:first-child{
+  }
+  .list-faq dd::after {
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+    width: 20px;
+    height: 20px;
+    display: block;
+    content: "";
+    border-top: solid 1px #3E3E3E;
+    border-right: solid 1px #3E3E3E;
+    transform: translateX(-50%) rotate(-45deg);
+    transform-origin: 50% 50%;
+  }
+  @media screen and (min-width: 750px) {
+    .list-faq > div::before,
+    .list-faq > div::after {
+      top: 44px;
+      right: 20px;
+      width: 33px;
+    }
+    .list-faq dt {
+      padding: 25px 60px 25px 20px;
+      font-size: 20px;
+    }
+    .list-faq dt svg {
+      width: 30.18px;
+      height: 32.25px;
+    }
+    .list-faq dt span {
+      margin: 0 0 0 55px;
+    }
+    .list-faq dd {
+      padding: 25px 0 100px 80px;
+    }
+    .list-faq dd svg {
+      width: 27.64px;
+      height: 28.01px;
+    }
+    .list-faq dd div {
+      margin: 0 0 0 48px;
+    }
+    .list-faq dd::after {
+      bottom: 25px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+{%- endstyle -%}
+
+
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width page-width--narrow section-{{ section.id }}-padding page-{{ page.handle }}">
+    <h1 class="h1-faq"><img src="{{ "faq_hero.png" | asset_url }}" alt="FAQ"></h1>
+    
+    <div class="rte">
+      
+      <dl class="list-faq">
+        {% for block in section.blocks %}
+        <div class="qa">
+          <dt>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24.141" height="25.797" viewBox="0 0 24.141 25.797">
+              <path id="パス_2508" data-name="パス 2508" d="M-.1.391A10.443,10.443,0,0,1-7.945-2.734a11.308,11.308,0,0,1-3.031-8.172A12.087,12.087,0,0,1-7.9-19.5,10.626,10.626,0,0,1,.258-22.781a10.145,10.145,0,0,1,7.75,3.141,11.527,11.527,0,0,1,2.969,8.281A11.875,11.875,0,0,1,7.9-2.844q-.109.109-.2.211a2.414,2.414,0,0,1-.2.2l5.672,5.453H6.1L3.133,0A12.569,12.569,0,0,1-.1.391ZM.117-18.437a5.1,5.1,0,0,0-4.219,2,8.273,8.273,0,0,0-1.562,5.266A8.154,8.154,0,0,0-4.1-5.906,5.006,5.006,0,0,0-.008-3.969,5.065,5.065,0,0,0,4.133-5.844a8.136,8.136,0,0,0,1.531-5.234A8.78,8.78,0,0,0,4.18-16.5,4.813,4.813,0,0,0,.117-18.437Z" transform="translate(10.977 22.781)" fill="#8a733b"/>
+            </svg>
+            <span>{{ block.settings.question }}</span>
+          </dt>
+          <dd>
+            <svg xmlns="http://www.w3.org/2000/svg" width="22.109" height="22.406" viewBox="0 0 22.109 22.406">
+              <path id="パス_2509" data-name="パス 2509" d="M22.266,0h-5.5L15.172-4.984H7.2L5.625,0H.156L8.313-22.406H14.3Zm-8.25-8.859-2.406-7.531a9.814,9.814,0,0,1-.375-2.016h-.125a8.546,8.546,0,0,1-.391,1.953L8.281-8.859Z" transform="translate(-0.156 22.406)" fill="#8a733b"/>
+            </svg>
+            <div>{{ block.settings.answer }}</div>
+          </dd>
+        </div>
+        {% endfor %}
+      </dl>
+
+      
+    </div>
+  </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+$(function(){
+  $(".list-faq dd").hide();
+  $(".list-faq div").on("click", function(e){
+    $('dd',this).slideToggle();
+    if($(this).hasClass('is-open')){
+      $(this).removeClass('is-open');
+    }else{
+      $(this).addClass('is-open');
+    }
+  });
+});
+</script>
+
+
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }  
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "質問",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "質問タイトル"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "答え"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

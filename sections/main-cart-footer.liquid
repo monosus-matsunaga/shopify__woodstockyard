@@ -1,0 +1,190 @@
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{{ 'component-totals.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+
+<div class="page-width{% if cart == empty %} is-empty{% endif %}" id="main-cart-footer" data-id="{{ section.id }}">
+  <div>
+    <div class="cart__footer is-custom">
+      {%- if section.settings.show_cart_note -%}
+        <cart-note class="cart__note field">
+          <label for="Cart-note">{{ 'sections.cart.note' | t }}</label>
+          <textarea class="text-area field__input" name="note" form="cart" id="Cart-note" placeholder="{{ 'sections.cart.note' | t }}">{{ cart.note }}</textarea>
+        </cart-note>
+      {%- endif -%}
+
+      <div class="cart__blocks">
+        {% for block in section.blocks %}
+          {%- case block.type -%}
+            {%- when '@app' -%}
+              {% render block %}
+            {%- when 'subtotal' -%}
+              <div class="cart-subtotal-custom__blocks">
+                <div class="cart-subtotal-custom__blocks-js-contents">
+                  <div class="js-contents" {{ block.shopify_attributes }}>
+                    <div class="totals">
+                      {% comment %} <h3 class="totals__subtotal">{{ 'sections.cart.subtotal' | t }}</h3> {% endcomment %}
+                      <h3 class="totals__subtotal">商品代</h3>
+                      <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}<small>(税込)</small></p>
+                    </div>
+                    <div class="totals">
+                      <h3 class="totals__subtotal">送料</h3>
+                      <p class="totals__subtotal-value"><span id="shippingFeeOnTotal">----</span><small>(税込)</small></p>
+                    </div>
+                    <div class="totals">
+                      <h3 class="totals__subtotal">合計</h3>
+                      <p class="totals__subtotal-value"><span id="totalPriceOnTotal">----</span><small>(税込)</small></p>
+                    </div>
+
+                    <div>
+                      {%- if cart.cart_level_discount_applications.size > 0 -%}
+                        <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                          {%- for discount in cart.cart_level_discount_applications -%}
+                            <li class="discounts__discount discounts__discount--position">
+                              {%- render 'icon-discount' -%}
+                              {{ discount.title }}
+                              (-{{ discount.total_allocated_amount | money }})
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                    </div>
+
+                    <small class="tax-note caption-large rte">
+                      {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                        {{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                      {%- elsif cart.taxes_included -%}
+                        {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+                      {%- elsif shop.shipping_policy.body != blank -%}
+                        {{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+                      {%- else -%}
+                        {{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
+                      {%- endif -%}
+                    </small>
+                  </div>
+                </div>
+<!--
+                <button type="button" class="button" id="pdfEstimate" onclick="window.print();">
+                見積り書出力
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="16.008" viewBox="0 0 24 16.008">
+                    <g id="グループ_1185" data-name="グループ 1185" transform="translate(-1207.97 -1264.552)">
+                      <rect id="長方形_1816" data-name="長方形 1816" width="8" height="8" transform="translate(1215.969 1264.552)" fill="#fff"/>
+                      <path id="多角形_4" data-name="多角形 4" d="M8,0l8,3H0Z" transform="translate(1227.969 1274.552) rotate(-180)" fill="#fff"/>
+                      <line id="線_6" data-name="線 6" y2="6.008" transform="translate(1208.97 1274.551)" fill="none" stroke="#fffcfc" stroke-width="2"/>
+                      <path id="パス_1593" data-name="パス 1593" d="M0,0H22" transform="translate(1208.969 1279.552)" fill="none" stroke="#fffcfc" stroke-width="2"/>
+                      <path id="パス_1592" data-name="パス 1592" d="M0,0V6.008" transform="translate(1230.97 1274.551)" fill="none" stroke="#fffcfc" stroke-width="2"/>
+                    </g>
+                  </svg>
+                </button>
+-->
+              </div>
+            {%- else -%}
+              <div class="error-message-cart--estimate-ng">
+                  送料が計算できませんでした。<br>
+                  400kg以上もしくは2.2m以上の場合は個別見積もりいたします。<br>
+                  恐れ入りますが、<a href="/pages/contact" target="_blank">お問い合わせフォーム</a>よりご希望の注文内容を明記の上、ご連絡ください。
+              </div>
+              <hr>
+              <div class="cart-checkout-custom__blocks">
+                <div class="cart-checkout-block">
+                  <div class="cart-checkout-block__column">
+                    <a href="{{ routes.all_products_collection_url }}" class="button button--secondary">{{ 'general.continue_shopping' | t }}</a>
+                  </div>
+                  <div class="cart-checkout-block__column">
+                    <div class="cart-shipping-inquiry">
+                      <p>道路幅が狭いため個別対応となります。お問い合わせフォームよりご注文ください。</p>
+                      <a href="/pages/contact" class="button" target="_blank">お問い合わせフォーム</a>
+                    </div>
+                    <div class="cart__ctas" {{ block.shopify_attributes }}>
+                      <noscript>
+                        <button type="submit" class="cart__update-button button button--secondary" form="cart">
+                          {{ 'sections.cart.update' | t }}
+                        </button>
+                      </noscript>
+
+                      <button type="submit" id="checkout" class="cart__checkout-button button" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+                        {{ 'sections.cart.checkout' | t }}
+                      </button>
+                    </div>
+                    {%- if additional_checkout_buttons -%}
+                      <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+                        {{ content_for_additional_checkout_buttons }}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+          {%- endcase -%}
+        {% endfor %}
+
+        <div id="cart-errors"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% javascript %}
+  class CartNote extends HTMLElement {
+    constructor() {
+      super();
+
+      this.addEventListener('change', debounce((event) => {
+        const body = JSON.stringify({ note: event.target.value });
+        fetch(`${routes.cart_update_url}`, {...fetchConfig(), ...{ body }});
+      }, 300))
+    }
+  }
+
+  customElements.define('cart-note', CartNote);
+{% endjavascript %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      const msie = ua.indexOf('MSIE ');
+      const trident = ua.indexOf('Trident/');
+
+      return (msie > 0 || trident > 0);
+    }
+
+    if (!isIE()) return;
+    const cartSubmitInput = document.createElement('input');
+    cartSubmitInput.setAttribute('name', 'checkout');
+    cartSubmitInput.setAttribute('type', 'hidden');
+    document.querySelector('#cart').appendChild(cartSubmitInput);
+    document.querySelector('#checkout').addEventListener('click', function(event) {
+      document.querySelector('#cart').submit();
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "t:sections.main-cart-footer.name",
+  "class": "cart__footer-wrapper",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_cart_note",
+      "default": false,
+      "label": "t:sections.main-cart-footer.settings.show_cart_note.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subtotal",
+      "name": "t:sections.main-cart-footer.blocks.subtotal.name",
+      "limit": 1
+    },
+    {
+      "type": "buttons",
+      "name": "t:sections.main-cart-footer.blocks.buttons.name",
+      "limit": 1
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

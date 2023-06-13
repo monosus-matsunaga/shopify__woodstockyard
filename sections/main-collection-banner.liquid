@@ -1,0 +1,60 @@
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-collection-list {
+    margin-bottom: 100px;
+  }
+{%- endstyle -%}
+
+
+
+<div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} gradient">
+  <div class="collection-hero__inner page-width">
+
+    {%- if section.settings.show_collection_image and collection.image -%}
+      <div class="collection-hero__image-container gradient">
+        <img src="{{ collection.image | image_url }}" alt="{{ collection.title | escape }}">
+      </div>
+    {%- endif -%}
+
+    <div class="collection-hero__text-wrapper">
+      <h1 class="collection-hero__title">
+        <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
+        {{- collection.title | escape -}}　
+        <span class="txt-tree-species">ウエスタンレッドシダー</span>
+      </h1>
+
+      {%- if section.settings.show_collection_description -%}
+        <div class="collection-hero__description rte">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": "t:sections.main-collection-banner.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_image",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_image.label",
+      "info": "t:sections.main-collection-banner.settings.show_collection_image.info"
+    }
+  ]
+}
+{% endschema %}

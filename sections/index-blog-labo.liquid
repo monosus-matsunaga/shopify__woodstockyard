@@ -1,0 +1,206 @@
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-article-card.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-featured-blog.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-article-card.css' | asset_url | stylesheet_tag }}</noscript>
+
+{{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  html[lang="ja"] h2.blog__title {
+    font-family: 'Optima' !important;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+  }
+  .txt-summary {
+    margin: 15px auto 0;
+  }
+  .btn-view-all {
+    margin: 50px auto 0;
+    text-align: center;
+  }
+  .btn-view-all.btn-pc {
+    display: none;
+  }
+  .blog__posts.articles-wrapper {
+    margin-top: 50px;
+  }
+  .section-{{ section.id }}-padding .article::after {
+    display:block;
+    position: absolute;
+    right: -7px;
+    top: -26px;
+    width: 53px;
+    height: 53px;
+    content: "";
+    background-image: url({{ "labo_ico_diy.png" | asset_url }});
+    background-size: cover;
+  }
+
+  @media screen and (min-width: 750px) {
+    html[lang="ja"] h2.blog__title {
+      text-align: left;
+      font-size: 50px;
+    }
+  }
+  @media screen and (min-width: 990px) {
+    .section-{{ section.id }}-padding {
+      display: flex;
+      justify-content: space-between;
+    }
+    .h2-title-wrap {
+      width: calc(25% - 20px);
+      max-width: calc(25% - 20px); 
+    }
+    .txt-summary {
+      margin: 35px auto 0;
+    }
+    .btn-view-all.btn-sp {
+      display: none;
+    }
+    .btn-view-all.btn-pc {
+      display: block;
+      margin-top: 70px;
+      text-align: left;
+    }
+    .blog__posts.articles-wrapper {
+      width: calc(75% - 20px);
+      max-width: calc(75% - 20px);
+      margin-top: 0;
+    }
+  }
+{%- endstyle -%}
+
+
+
+{%- liquid
+  assign posts_displayed = section.settings.blog.articles_count
+  if section.settings.post_limit <= section.settings.blog.articles_count
+    assign posts_exceed_limit = true
+    assign posts_displayed = section.settings.post_limit
+  endif
+-%}
+<div class="blog color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+
+    <div class="h2-title-wrap">
+      <h2 class="blog__title">LABO!</h2>
+      <p class="txt-summary">規格外サイズの木材でつくるちいさな冒険プロジェクトをご紹介。WSY✕建築家、WSY✕工務店のプロジェクトから、真似したいヒントを探そう！</p>
+      <div class="btn-view-all btn-pc"><a href="{{ section.settings.blog.url }}" class="button">一覧へ</a></div>
+    </div>
+    
+    <ul class="blog__posts articles-wrapper contains-card grid grid--1-col grid--3-col-desktop grid--3-col-tablet" role="list">
+      {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}
+        <li class="blog__post grid__item article">
+          {% render 'article-card', blog: section.settings.blog, article: article, media_aspect_ratio: 1.66, show_image: section.settings.show_image, show_date: section.settings.show_date, show_author: section.settings.show_author, show_excerpt: true %}
+        </li>
+      {%- endfor -%}
+    </ul>
+    <div class="btn-view-all btn-sp"><a href="{{ section.settings.blog.url }}" class="button">一覧へ</a></div>
+
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "index-LABO!",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "t:sections.featured-blog.settings.blog.label"
+    },
+    {
+      "type": "range",
+      "id": "post_limit",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.featured-blog.settings.post_limit.label"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.featured-blog.settings.columns_desktop.label"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_image.label",
+      "info": "t:sections.featured-blog.settings.show_image.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "t:sections.featured-blog.settings.show_author.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_view_all.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "LABO!"
+      }
+    }
+  ]
+}
+{% endschema %}

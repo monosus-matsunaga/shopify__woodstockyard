@@ -1,0 +1,141 @@
+{{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+
+{%- style -%}
+  .color-baige {
+    background-color: #EEEDE4;
+  }
+  .section-{{ section.id }}-padding {
+    padding-top: 25px;
+    padding-bottom: 35px;
+  }
+  .collection-list-title {
+    font-size: 22px;
+    text-align: center;
+  }
+  .collection-list {
+    margin-top: 20px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: 45px;
+      padding-bottom: 30px;
+    }
+    .collection-list-title {
+      font-size: 28px;
+      text-align: left;
+    }
+    .collection-list.grid {
+      margin-top: 26px;
+      row-gap: 0;
+    }
+  }
+{%- endstyle -%}
+
+
+
+{%- liquid
+  assign columns_mobile_int = section.settings.columns_mobile | plus: 0
+  assign show_mobile_slider = false
+-%}
+
+<div class="color-baige gradient">
+  <div class="collection-list-wrapper page-width section-{{ section.id }}-padding">
+    <h2 class="collection-list-title">CATEGORY</h2>
+  
+    <ul class="collection-list contains-card{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid{% if section.settings.columns_desktop == 1 %} grid--full-width{% else %} grid--{{ section.settings.columns_desktop }}-col-desktop{% endif %} grid--{{ section.settings.columns_mobile }}-col-tablet-down collection-list--{{ section.blocks.size }}-items"
+      role="list">
+      {%- liquid
+        assign columns = section.blocks.size
+        if columns > 3
+          assign columns = 3
+        endif
+      -%}
+      {%- for block in section.blocks -%}
+        <li class="collection-list__item grid__item{% if block.settings.collection.featured_image == nil %} collection-list__item--no-media{% endif %}">
+          {% render 'card-collection', card_collection: block.settings.collection, columns: columns %}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": "index-collection",
+  "tag": "section",
+  "class": "section section-collection-list",
+  "max_blocks": 15,
+  "settings": [
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "label": "t:sections.collection-list.settings.columns_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "default": false,
+      "label": "t:sections.collection-list.settings.show_view_all.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.collection-list.settings.header_mobile.content"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.collection-list.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.collection-list.settings.columns_mobile.options__2.label"
+        }
+      ],
+      "default": "1",
+      "label": "t:sections.collection-list.settings.columns_mobile.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "t:sections.collection-list.blocks.featured_collection.name",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.collection-list.presets.name",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

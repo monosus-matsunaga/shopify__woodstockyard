@@ -1,0 +1,150 @@
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: 25px;
+    padding-bottom: 0;
+  }
+  
+  .section-news-topics a {
+    color: #000;
+    text-decoration: none;
+  }
+  .section-news-topics a:hover {
+    text-decoration: underline;
+  }
+
+  .list-news-topics {
+    margin: 0;
+    padding: 0;
+  }
+  .list-news-topics .article {
+    display: flex;
+  }
+  .list-news-topics dt {
+    width: 6.5em;
+    margin: 0;
+    font-size: 13px;
+    flex-shrink: 0;
+    flex-grow: 0;
+  }
+  .list-news-topics dd {
+    margin: 0;
+    font-size: 12px;
+  }
+  .link-txt-news-topics {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    font-size: 12px;
+  }
+  .link-txt-news-topics::before {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    transform-origin: center center;
+    width: 6px;
+    height: 6px;
+    border-top: solid 1px #fff;
+    border-right: solid 1px #fff;
+    content: "";
+  }
+  .link-txt-news-topics::after {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #000;
+    margin-left: 0.5em;
+    content: "";
+    border: solid 1px #fff;
+  }
+  .link-txt-news-topics:hover::after {
+    border: solid 1px #000;
+  }
+
+  @media screen and (max-width: 749px) {
+    .list-news-topics {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: solid 1px #DEDEDE;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: 65px;
+      padding-bottom: 0;
+    }
+    .section-news-topics-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: solid 1px #DEDEDE;
+      padding-bottom: 15px;
+    }
+    .list-news-topics dt {
+      font-size: 15px;
+    }
+    .list-news-topics dd {
+      font-size: 14px;
+    }
+    .link-txt-news-topics {
+      font-size: 14px;
+    }
+    .link-txt-news-topics::before {
+      right: 9px;
+      width: 7px;
+      height: 7px;
+    }
+    .link-txt-news-topics::after {
+      width: 23px;
+      height: 23px;
+    }
+  }
+{%- endstyle -%}
+
+
+
+{%- assign blog = blogs[section.settings.news_list] -%}
+
+<div class="page-width section-news-topics section-{{ section.id }}-padding">
+  <div class="section-news-topics-inner">
+    <dl class="list-news-topics">
+      {% for article in blog.articles limit: 1 %}
+        <div class="blog-articles__article article">
+          <dt>{{ article.published_at | date: '%Y.%m.%d' }}</dt>
+          <dd>{{ article.title | link_to: article.url }}</dd>
+        </div>
+      {% endfor %}
+    </dl>
+    <div class="link-txt-news-topics">
+      <a href="{{ blog.url }}">NEWS & TOPICS一覧</a>
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+{
+  "name": "index-NEWS",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "news_list",
+      "label": "表示するブログ記事を選択"
+    }
+  ],
+  "presets": [
+    {
+      "name": "NEWS&TOPICS",
+      "settings": {
+      }
+    }
+  ]
+}
+{% endschema %}
